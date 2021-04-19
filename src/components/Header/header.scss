@@ -1,0 +1,15 @@
+header {
+    height: 100vh;
+    background: url(./cover-image.jpg) no-repeat center top / cover;;
+    .wrapper {
+        max-width: 80%;
+        margin: 0 auto;
+        background: red;
+    }
+}
+
+.search-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

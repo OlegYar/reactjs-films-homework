@@ -1,12 +1,12 @@
 import React from 'react';
-import Signature from '../signature';
+import Header from '../Header';
 import './app.scss';
 
 const App = () => {
-  const person = { name: 'Oleg', sername: 'Yarotskiy' };
+  const text = 'gfdg';
   return (
-    <div className="signature">
-      <Signature name={person.name} sername={person.sername} />
+    <div>
+      <Header text={text} />
     </div>
   );
 };
