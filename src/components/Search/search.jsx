@@ -1,11 +1,11 @@
 import React from 'react';
-import './Search.scss';
+import styles from './Search.module.scss';
 
 const Search = () => (
-  <div className="search">
-    <form className="search-form">
-      <input type="text" />
-      <button type="button">&#128269;</button>
+  <div className={styles.search}>
+    <form className={styles.searchForm}>
+      <input className={styles.searchInput} type="text" placeholder="Search here..." />
+      <button className={styles.searchButton} type="button"> </button>
     </form>
   </div>
 );
