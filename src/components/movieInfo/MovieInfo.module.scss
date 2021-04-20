@@ -1,0 +1,18 @@
+.wrppaer {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    color: white;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+}
+
+.listItem {
+    color: white;
+    margin-right: 15px;
+}

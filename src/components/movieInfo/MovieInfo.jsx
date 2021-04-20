@@ -1,18 +1,24 @@
 import React from 'react';
-import './MovieInfo.scss';
+import PropTypes from 'prop-types';
+import styles from './MovieInfo.module.scss';
 
-const MovieInfo = () => (
-  <div>
-    <h2>THE JUNGLE BOOK</h2>
-    <ul>
-      <li>Adventure</li>
-      <li>Drama</li>
-      <li>Family</li>
-      <li>Fantasy</li>
-      <li>|</li>
-      <li>1h 46m</li>
+const MovieInfo = ({ title, genreList, duration }) => (
+  <div className={styles.wrapper}>
+    <h2 className={styles.title}>{title}</h2>
+    <ul className={styles.list}>
+      {genreList.map((item) => (
+        <li className={styles.listItem}>{item}</li>
+      ))}
+      <li className={styles.listItem}>|</li>
+      <li className={styles.listItem}>{duration}</li>
     </ul>
   </div>
 );
+
+MovieInfo.propTypes = {
+  title: PropTypes.string.isRequired,
+  genreList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  duration: PropTypes.string.isRequired,
+};
 
 export default MovieInfo;
