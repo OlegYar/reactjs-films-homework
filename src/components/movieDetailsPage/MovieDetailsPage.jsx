@@ -1,6 +1,7 @@
 import React from 'react';
 import Search from '../search';
 import MovieInfo from '../movieInfo';
+import Button from '../button';
 import './MovieDetailsPage.scss';
 
 const MovieDetailsPage = () => (
@@ -16,6 +17,10 @@ const MovieDetailsPage = () => (
           genreList={['Adventure', 'Drama', 'Family', 'Fantasy']}
           duration="1h 46m"
         />
+      </div>
+      <div className="button-wrapper">
+        <Button value="Watch Now" />
+        <Button value="View Info" />
       </div>
     </div>
   </div>
