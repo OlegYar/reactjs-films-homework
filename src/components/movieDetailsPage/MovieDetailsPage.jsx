@@ -18,7 +18,7 @@ const MovieDetailsPage = () => (
           genreList={['Adventure', 'Drama', 'Family', 'Fantasy']}
           duration="1h 46m"
         />
-        <Stars rating={4.8} />
+        <Stars rating={4.3} />
       </div>
       <div className="button-wrapper">
         <Button value="Watch Now" />
