@@ -3,17 +3,17 @@ import Search from '../search';
 import MovieInfo from '../movieInfo';
 import Button from '../button';
 import Stars from '../stars';
-import './MovieDetailsPage.scss';
-import AboutFilm from '../aboutFilm/AboutFilm';
+import AboutFilm from '../aboutFilm';
+import styles from './MovieDetailsPage.module.scss';
 
 const MovieDetailsPage = () => (
-  <div className="wrapper">
-    <div className="header">
-      <span className="logo">FILMS</span>
+  <div className={styles.wrapper}>
+    <div className={styles.header}>
+      <span className={styles.logo}>FILMS</span>
       <Search />
     </div>
-    <div className="details">
-      <div className="film-info">
+    <div className={styles.details}>
+      <div className={styles.filmInfo}>
         <MovieInfo
           title="THE JUNGLE BOOK"
           genreList={['Adventure', 'Drama', 'Family', 'Fantasy']}
@@ -21,7 +21,7 @@ const MovieDetailsPage = () => (
         />
         <Stars rating={4.3} />
       </div>
-      <div className="button-wrapper">
+      <div className={styles.buttonWrapper}>
         <Button value="Watch Now" />
         <Button value="View Info" />
       </div>
