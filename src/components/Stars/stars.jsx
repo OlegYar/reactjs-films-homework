@@ -6,7 +6,7 @@ const Stars = ({ rating }) => {
   const starsArray = [];
   for (let i = 0; i < 5; i += 1) {
     const isFullStar = i < rating - 0.5 ? 'fas' : 'far';
-    starsArray.push(<li className={styles.star}><i className={`${isFullStar} fa-star`}> </i></li>);
+    starsArray.push(<li key={i + 1} className={styles.star}><i className={`${isFullStar} fa-star`}> </i></li>);
   }
   return (
     <div className={styles.filmRating}>
