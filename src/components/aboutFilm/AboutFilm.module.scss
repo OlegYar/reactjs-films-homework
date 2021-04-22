@@ -1,0 +1,27 @@
+.container {
+    width: 310px;
+    height: 215px;
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    right: 20px;
+    bottom: 100px;
+    padding: 20px;
+    display: block;
+    overflow: auto;
+}
+
+.description {
+    color: white;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.container::-webkit-scrollbar {
+    width: 10px;
+    height: 0px;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background-color: #143861;
+    border-radius: 9em;
+}

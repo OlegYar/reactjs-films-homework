@@ -4,6 +4,7 @@ import MovieInfo from '../movieInfo';
 import Button from '../button';
 import Stars from '../stars';
 import './MovieDetailsPage.scss';
+import AboutFilm from '../aboutFilm/AboutFilm';
 
 const MovieDetailsPage = () => (
   <div className="wrapper">
@@ -25,6 +26,11 @@ const MovieDetailsPage = () => (
         <Button value="View Info" />
       </div>
     </div>
+    <AboutFilm
+      text="There are growing dangers in the wizarding world of 1926 New York.
+      Something mysterious is leaving a path of destruction in the streets,
+      threatening to expose the wizarding"
+    />
   </div>
 );
 
