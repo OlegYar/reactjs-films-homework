@@ -1,0 +1,28 @@
+.filmRating {
+    width: 200px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stars {
+    list-style: none;
+    display: flex;
+}
+
+.star {
+    color: #0aaee4;
+    margin-right: 13px;
+    font-size: 17px;
+}
+
+.ratingContainer {
+    width: 38px;
+    border: 1px solid #0aaee4;
+    border-radius: 5px;
+}
+
+.rating {
+    color: white;
+    text-align: center;
+}
