@@ -1,9 +1,9 @@
 import React from 'react';
-import Search from '../search';
-import MovieInfo from '../movieInfo';
-import Button from '../button';
-import Stars from '../stars';
-import AboutFilm from '../aboutFilm';
+import Search from '../search/Search';
+import MovieInfo from '../movieInfo/MovieInfo';
+import Button from '../button/Button';
+import Stars from '../stars/Stars';
+import AboutFilm from '../aboutFilm/AboutFilm';
 import styles from './MovieDetailsPage.module.scss';
 
 const MovieDetailsPage = () => (
