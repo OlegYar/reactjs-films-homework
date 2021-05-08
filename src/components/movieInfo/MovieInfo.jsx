@@ -4,14 +4,16 @@ import styles from './MovieInfo.module.scss';
 
 const MovieInfo = ({ title, genreList, duration }) => (
   <div className={styles.wrapper}>
-    <h2 className={styles.title}>{title}</h2>
-    <ul className={styles.list}>
-      {genreList.map((item) => (
-        <li className={styles.listItem}>{item}</li>
-      ))}
-      <li className={styles.listItem}>|</li>
-      <li className={styles.listItem}>{duration}</li>
-    </ul>
+    <h2 data-testid="titleFilm" className={styles.title}>{title}</h2>
+    <div className={styles.aboutFilm}>
+      <ul className={styles.list}>
+        {genreList.map((item) => (
+          <li data-testid="genre" className={styles.listItem}>{item}</li>
+        ))}
+      </ul>
+      <span data-testid="spliter" className={styles.splitter}>|</span>
+      <p data-testid="duration" className={styles.duration}>{duration}</p>
+    </div>
   </div>
 );
 

@@ -5,7 +5,7 @@ const Search = () => (
   <div className={styles.search}>
     <form className={styles.searchForm}>
       <input className={styles.searchInput} type="text" placeholder="Search here..." />
-      <button className={styles.searchButton} type="button"> </button>
+      <button data-testid="searchButton" className={styles.searchButton} type="button"> </button>
     </form>
   </div>
 );

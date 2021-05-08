@@ -9,7 +9,7 @@ import styles from './MovieDetailsPage.module.scss';
 const MovieDetailsPage = () => (
   <div className={styles.wrapper}>
     <div className={styles.header}>
-      <span className={styles.logo}>FILMS</span>
+      <span data-testid="logo" className={styles.logo}>FILMS</span>
       <Search />
     </div>
     <div className={styles.details}>

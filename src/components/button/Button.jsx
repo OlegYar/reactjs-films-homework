@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 
 const Button = ({ value }) => (
-  <button type="button" className={styles.button}>
+  <button data-testid="button" type="button" className={styles.button}>
     {value}
   </button>
 );

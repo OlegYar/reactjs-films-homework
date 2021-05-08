@@ -9,12 +9,18 @@
     font-weight: 700;
 }
 
+.aboutFilm {
+    display: flex;
+}
+
 .list {
     list-style: none;
     display: flex;
 }
 
-.listItem {
+.listItem,
+.splitter,
+.duration {
     color: white;
     margin-right: 25px;
     font-size: 15px;

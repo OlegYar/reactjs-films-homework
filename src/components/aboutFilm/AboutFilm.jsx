@@ -4,7 +4,7 @@ import styles from './AboutFilm.module.scss';
 
 const AboutFilm = ({ text }) => (
   <div className={styles.container}>
-    <p className={styles.description}>
+    <p data-testid="about" className={styles.description}>
       {text}
     </p>
   </div>
