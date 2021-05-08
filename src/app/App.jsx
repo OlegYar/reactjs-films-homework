@@ -3,9 +3,7 @@ import MovieDetailsPage from '../components/movieDetailsPage';
 import './App.scss';
 
 const App = () => (
-  <>
-    <MovieDetailsPage />
-  </>
+  <MovieDetailsPage />
 );
 
 export default App;

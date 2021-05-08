@@ -1,3 +1,1 @@
-import AboutFilm from './AboutFilm';
-
-export default AboutFilm;
+export { default } from './AboutFilm';
