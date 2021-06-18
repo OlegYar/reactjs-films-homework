@@ -1,0 +1,89 @@
+.movieCard {
+    width: 300px;
+    height: 325px;
+    border: 1px solid #000;
+}
+
+.movieCardCover {
+    width: 100%;
+    height: 250px;
+    background: url(../../assets/images/cover-image.jpg) no-repeat center top / cover;
+}
+
+.movieCardCover:hover > .movieCardInfo {
+    display: flex;
+}
+
+.movieCardInfo {
+    width: 100%;
+    height: 100%;
+    background: rgba($color: #000000, $alpha: 0.7);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.playIcon {
+    font-size: 65px;
+    color: #0aaee4;
+    margin-top: 20%;
+}
+
+.playIconTitle {
+    color: white;
+    font-size: 17px;
+}
+
+.button {
+    width: 120px;
+    height: 35px;
+    margin-top: 10%;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #0aaee4;
+    border: 2px solid #0aaee4;
+}
+
+.movieCardMainInfo {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.movieCardMainInfoTitle {
+    width: 180px;
+}
+
+.movieName {
+    font-size: 17px;
+}
+
+.genreList {
+    list-style: none;
+    display: flex;
+}
+
+.genreListItem {
+    color: #0aaee4;
+    margin-right: 15px;
+}
+
+.movieCardMainInfoRating {
+    width: 38px;
+    height: 21px;
+    border: 1px solid #0aaee4;
+    border-radius: 5px;
+}
+
+.rating {
+    color: #0aaee4;
+    text-align: center;
+}
