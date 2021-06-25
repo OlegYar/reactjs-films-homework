@@ -1,10 +1,13 @@
 import React from 'react';
 import MovieDetailsPage from '../components/movieDetailsPage';
-import MovieListItem from '../components/movieListItem';
+import MovieList from '../components/movieList';
 import './App.scss';
 
 const App = () => (
+  <div>
     <MovieDetailsPage />
+    <MovieList />
+  </div>
 );
 
 export default App;

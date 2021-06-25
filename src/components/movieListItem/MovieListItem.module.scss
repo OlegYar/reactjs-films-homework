@@ -2,6 +2,8 @@
     width: 300px;
     height: 325px;
     border: 1px solid #000;
+    background-color: white;
+    margin-top: 20px;
 }
 
 .movieCardCover {
@@ -51,7 +53,7 @@
 }
 
 .movieCardMainInfo {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     margin-top: 20px;
     display: flex;
@@ -59,21 +61,16 @@
 }
 
 .movieCardMainInfoTitle {
-    width: 180px;
+    width: 210px;
 }
 
 .movieName {
     font-size: 17px;
 }
 
-.genreList {
-    list-style: none;
-    display: flex;
-}
-
-.genreListItem {
+.genres {
     color: #0aaee4;
-    margin-right: 15px;
+    font-size: 13px;
 }
 
 .movieCardMainInfoRating {
