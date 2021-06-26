@@ -2,11 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './MovieListItem.module.scss';
 
-const MovieListItem = ({ title, genres, rating }) => {
+const MovieListItem = (
+  {
+    title, genres, rating, backdropPath,
+  },
+) => {
+  const movieCover = {
+    background: `url(https://image.tmdb.org/t/p/w300/${backdropPath}) no-repeat center top / cover`,
+  };
   const genreStr = genres.join(', ');
   return (
     <div className={styles.movieCard}>
-      <div className={styles.movieCardCover}>
+      <div style={movieCover} className={styles.movieCardCover}>
         <div className={styles.movieCardInfo}>
           <div className={styles.playIcon}>
             <i className="fas fa-play-circle play"> </i>
@@ -34,6 +41,7 @@ MovieListItem.propTypes = {
   title: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   rating: PropTypes.number.isRequired,
+  backdropPath: PropTypes.string.isRequired,
 };
 
 export default MovieListItem;
