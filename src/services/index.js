@@ -14,12 +14,18 @@ export default class TheMovieDbService {
       return res.results.map(this.transformMovies);
     }
 
+    async getGenreList() {
+      const res = await this.getResorce('/genre/movie/list?api_key=95ba99e0f191e9eabd8a1d0c164f0af3&language=en-US');
+      return res.genres;
+    }
+
     transformMovies = (movie) => (
       {
         id: movie.id,
         title: movie.title,
         rating: movie.vote_average,
         posterPath: movie.poster_path,
+        genreIds: movie.genre_ids,
       }
     )
 }

@@ -8,8 +8,20 @@ class MovieList extends Component {
 
   constructor() {
     super();
-    this.state = { films: null };
+    this.state = {
+      films: null,
+      genres: null,
+    };
     this.updateMoviePage(1);
+    this.getGenres();
+  }
+
+  getGenres() {
+    this.movieApi.getGenreList().then((genres) => {
+      this.setState({
+        genres,
+      });
+    });
   }
 
   updateMoviePage(page) {
@@ -21,10 +33,14 @@ class MovieList extends Component {
   }
 
   render() {
-    const { films } = this.state;
+    const { films, genres } = this.state;
     let movieCards;
     if (films) {
-      movieCards = films.map((movie) => <li key={movie.id} className={styles.movieListItem}><MovieListItem movie={movie} genres={['Adventure', 'Drama', 'Family', 'Fantasy']} /></li>);
+      movieCards = films.map((movie) => (
+        <li key={movie.id} className={styles.movieListItem}>
+          <MovieListItem movie={movie} genres={genres} />
+        </li>
+      ));
     }
     return (
       <div className={styles.movieListContainer}>

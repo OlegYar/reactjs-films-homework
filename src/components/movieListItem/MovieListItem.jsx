@@ -3,11 +3,16 @@ import PropTypes from 'prop-types';
 import styles from './MovieListItem.module.scss';
 
 const MovieListItem = ({ movie, genres }) => {
-  const { title, rating, posterPath } = movie;
+  const {
+    title, rating, posterPath, genreIds,
+  } = movie;
   const movieCover = {
     background: `url(https://image.tmdb.org/t/p/w300/${posterPath}) no-repeat center top / cover`,
   };
-  const genreStr = genres.join(', ');
+  let genreStr = '';
+  if (genres) {
+    genreStr = genreIds.map((id) => genres.find((g) => g.id === id).name).join(', ');
+  }
   return (
     <div className={styles.movieCard}>
       <div style={movieCover} className={styles.movieCardCover}>
@@ -35,8 +40,18 @@ const MovieListItem = ({ movie, genres }) => {
 };
 
 MovieListItem.propTypes = {
-  movie: PropTypes.objectOf(PropTypes.string).isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    rating: PropTypes.number,
+    posterPath: PropTypes.string,
+    genreIds: PropTypes.arrayOf(PropTypes.number),
+  }).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.object),
+};
+
+MovieListItem.defaultProps = {
+  genres: null,
 };
 
 export default MovieListItem;
