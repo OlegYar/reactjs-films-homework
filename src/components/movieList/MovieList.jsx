@@ -12,6 +12,9 @@ class MovieList extends Component {
       films: null,
       genres: null,
     };
+  }
+
+  componentDidMount() {
     this.updateMoviePage(1);
     this.getGenres();
   }
