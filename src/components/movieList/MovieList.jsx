@@ -1,58 +1,44 @@
-import React, { Component } from 'react';
-import MovieListItem from '../movieListItem/MovieListItem';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { loadTopratedFilmsAction, loadGenres } from '../../modules/reducer';
 import TheMovieDbService from '../../services';
+import MovieListItem from '../movieListItem/MovieListItem';
 import styles from './MovieList.module.scss';
 
-class MovieList extends Component {
-  movieApi = new TheMovieDbService();
+const movieApi = new TheMovieDbService();
 
-  constructor() {
-    super();
-    this.state = {
-      films: null,
-      genres: null,
-    };
-  }
+const fetchTopratedFilms = (page) => (dispatch) => {
+  movieApi.getTopRatedMovies(page).then((films) => dispatch(loadTopratedFilmsAction(films)));
+};
 
-  componentDidMount() {
-    this.updateMoviePage(1);
-    this.getGenres();
-  }
+const fetchGenres = () => (dispatch) => {
+  movieApi.getGenreList().then((genres) => dispatch(loadGenres(genres)));
+};
 
-  getGenres() {
-    this.movieApi.getGenreList().then((genres) => {
-      this.setState({
-        genres,
-      });
-    });
+const MovieList = () => {
+  const dispatch = useDispatch();
+  const films = useSelector((state) => state.films);
+  const genres = useSelector((state) => state.genres);
+  let movieCards;
+  if (films) {
+    movieCards = films.map((movie) => (
+      <li key={movie.id} className={styles.movieListItem}>
+        <MovieListItem movie={movie} genres={genres} />
+      </li>
+    ));
   }
-
-  updateMoviePage(page) {
-    this.movieApi.getTopRatedMovies(page).then((films) => {
-      this.setState({
-        films,
-      });
-    });
-  }
-
-  render() {
-    const { films, genres } = this.state;
-    let movieCards;
-    if (films) {
-      movieCards = films.map((movie) => (
-        <li key={movie.id} className={styles.movieListItem}>
-          <MovieListItem movie={movie} genres={genres} />
-        </li>
-      ));
-    }
-    return (
-      <div className={styles.movieListContainer}>
-        <ul className={styles.movieList}>
-          {movieCards}
-        </ul>
-      </div>
-    );
-  }
-}
+  useEffect(() => {
+    dispatch(fetchTopratedFilms(1));
+    dispatch(fetchGenres());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return (
+    <div className={styles.movieListContainer}>
+      <ul className={styles.movieList}>
+        {movieCards}
+      </ul>
+    </div>
+  );
+};
 
 export default MovieList;
