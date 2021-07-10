@@ -21,11 +21,13 @@ export default class TheMovieDbService {
 
     transformMovies = (movie) => (
       {
+        isMain: true,
         id: movie.id,
         title: movie.title,
         rating: movie.vote_average,
         posterPath: movie.poster_path,
         genreIds: movie.genre_ids,
+        overview: movie.overview,
       }
     )
 }
