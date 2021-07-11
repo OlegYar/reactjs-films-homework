@@ -5,17 +5,18 @@ import MovieListItemMain from '../movieListItemMain/MovieListItemMain';
 
 const MovieListItem = ({ movie, genres }) => {
   const {
-    title, rating, posterPath, genreIds, overview, isMain,
+    id, title, rating, posterPath, genreIds, overview, isMain,
   } = movie;
   const movieCover = {
     background: `url(https://image.tmdb.org/t/p/w300/${posterPath}) no-repeat center top / cover`,
   };
   let genreStr = '';
   if (genres) {
-    genreStr = genreIds.map((id) => genres.find((g) => g.id === id).name).join(', ');
+    genreStr = genreIds.map((itemId) => genres.find((g) => g.id === itemId).name).join(', ');
   }
   return (isMain) ? (
     <MovieListItemMain
+      id={id}
       title={title}
       rating={rating}
       background={movieCover}
@@ -23,6 +24,7 @@ const MovieListItem = ({ movie, genres }) => {
     />
   ) : (
     <MovieListItemInfo
+      id={id}
       title={title}
       rating={rating}
       background={movieCover}
@@ -35,6 +37,7 @@ const MovieListItem = ({ movie, genres }) => {
 MovieListItem.propTypes = {
   movie: PropTypes.shape({
     isMain: PropTypes.bool.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string,
     rating: PropTypes.number,
     posterPath: PropTypes.string,
