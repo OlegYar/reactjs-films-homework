@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './MovieListItemMain.module.scss';
-import { switchItemToInfoMode } from '../../modules/reducer';
+import { switchItemToInfoModeAction } from '../../modules/reducer';
 
 const MovieListItemMain = ({
   id, title, rating, background, genres,
@@ -16,7 +16,7 @@ const MovieListItemMain = ({
             <i className="fas fa-play-circle play"> </i>
           </div>
           <p className={styles.playIconTitle}>Watch Now</p>
-          <button onClick={() => dispatch(switchItemToInfoMode(id))} type="button" className={styles.button}>
+          <button onClick={() => dispatch(switchItemToInfoModeAction(id))} type="button" className={styles.button}>
             View Info
           </button>
         </div>

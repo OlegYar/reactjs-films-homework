@@ -3,14 +3,14 @@ const initialState = {
   genres: null,
 };
 
-const LOAD_TOPRATED_FILMS = 'LOAD_TOPRATED_FILMS';
+const LOAD_TRENDING_FILMS = 'LOAD_TRENDING_FILMS';
 const LOAD_GENRES = 'LOAD_GENRES';
 const SWITCH_ITEM_TO_INFO_MODE = 'SWITCH_ITEM_TO_INFO_MODE';
 const SWITCH_ITEM_TO_MAIN_MODE = 'SWITCH_ITEM_TO_MAIN_MODE';
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_TOPRATED_FILMS:
+    case LOAD_TRENDING_FILMS:
       return { ...state, films: [...state.films, ...action.payload] };
     case LOAD_GENRES:
       return { ...state, genres: action.payload };
@@ -45,8 +45,12 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export const loadTopratedFilmsAction = (payload) => ({ type: LOAD_TOPRATED_FILMS, payload });
-export const loadGenres = (payload) => ({ type: LOAD_GENRES, payload });
-export const switchItemToInfoMode = (payload) => ({ type: SWITCH_ITEM_TO_INFO_MODE, payload });
-export const switchItemToMainMode = (payload) => ({ type: SWITCH_ITEM_TO_MAIN_MODE, payload });
+export const loadTrendingFilmsAction = (payload) => ({ type: LOAD_TRENDING_FILMS, payload });
+export const loadGenresAction = (payload) => ({ type: LOAD_GENRES, payload });
+export const switchItemToInfoModeAction = (payload) => ({
+  type: SWITCH_ITEM_TO_INFO_MODE, payload,
+});
+export const switchItemToMainModeAction = (payload) => ({
+  type: SWITCH_ITEM_TO_MAIN_MODE, payload,
+});
 export default reducer;

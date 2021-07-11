@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadTopratedFilmsAction, loadGenres } from '../../modules/reducer';
+import { loadTrendingFilmsAction, loadGenresAction } from '../../modules/reducer';
 import TheMovieDbService from '../../services';
 import MovieListItem from '../movieListItem/MovieListItem';
 import styles from './MovieList.module.scss';
 
 const movieApi = new TheMovieDbService();
 
-const fetchTopratedFilms = (page) => (dispatch) => {
-  movieApi.getTopRatedMovies(page).then((films) => dispatch(loadTopratedFilmsAction(films)));
+const fetchTrendingFilms = (page) => (dispatch) => {
+  movieApi.getTrendingMovies(page).then((films) => dispatch(loadTrendingFilmsAction(films)));
 };
 
 const fetchGenres = () => (dispatch) => {
-  movieApi.getGenreList().then((genres) => dispatch(loadGenres(genres)));
+  movieApi.getGenreList().then((genres) => dispatch(loadGenresAction(genres)));
 };
 
 const MovieList = () => {
@@ -28,7 +28,7 @@ const MovieList = () => {
     ));
   }
   useEffect(() => {
-    dispatch(fetchTopratedFilms(1));
+    dispatch(fetchTrendingFilms(1));
     dispatch(fetchGenres());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

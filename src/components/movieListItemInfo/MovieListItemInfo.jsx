@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './MovieListItemInfo.module.scss';
-import { switchItemToMainMode } from '../../modules/reducer';
+import { switchItemToMainModeAction } from '../../modules/reducer';
 
 const MovieListItemInfo = ({
   id, title, rating, background, genres, overview,
@@ -12,7 +12,7 @@ const MovieListItemInfo = ({
     <div style={background} className={styles.movieCard}>
       <div className={styles.movieCardCover}>
         <button
-          onClick={() => dispatch(switchItemToMainMode(id))}
+          onClick={() => dispatch(switchItemToMainModeAction(id))}
           className={styles.exitButton}
           type="button"
         >
