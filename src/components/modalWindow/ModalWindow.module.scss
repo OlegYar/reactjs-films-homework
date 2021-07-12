@@ -1,0 +1,63 @@
+.modalOverlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalWindow {
+    width: 60%;
+    height: 75vh;
+    position: relative;
+    background-color: #cfc8c8;
+    border-radius: 10px;
+}
+
+.exitButton {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-color: transparent;
+    text-align: left;
+    width: 21px;
+    height: 21px;
+    border: none;
+}
+
+.exitButton i {
+    font-size: 21px;
+    color: gray;
+    cursor: pointer;
+}
+
+.modalBody {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.noVideo {
+    width: 70%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.smile {
+    font-size: 58px;
+    color: #1a85a8;
+}
+
+.sorryText {
+    font-size: 23px;
+    font-weight: bold;
+}

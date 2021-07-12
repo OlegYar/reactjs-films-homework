@@ -1,12 +1,18 @@
 const initialState = {
   films: [],
   genres: null,
+  modalWindow: {
+    isModalActive: false,
+    key: null,
+  },
 };
 
 const LOAD_TRENDING_FILMS = 'LOAD_TRENDING_FILMS';
 const LOAD_GENRES = 'LOAD_GENRES';
 const SWITCH_ITEM_TO_INFO_MODE = 'SWITCH_ITEM_TO_INFO_MODE';
 const SWITCH_ITEM_TO_MAIN_MODE = 'SWITCH_ITEM_TO_MAIN_MODE';
+const OPEN_MODAL = 'OPEN_MODAL';
+const CLOSE_MODAL = 'CLOSE_MODAL';
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -40,6 +46,10 @@ const reducer = (state = initialState, action) => {
         films: [...state.films.slice(0, movieIndx), newMovie, ...state.films.slice(movieIndx + 1)],
       };
     }
+    case OPEN_MODAL:
+      return { ...state, modalWindow: { isModalActive: true, key: action.payload } };
+    case CLOSE_MODAL:
+      return { ...state, modalWindow: { isModalActive: false, key: null } };
     default:
       return state;
   }
@@ -53,4 +63,6 @@ export const switchItemToInfoModeAction = (payload) => ({
 export const switchItemToMainModeAction = (payload) => ({
   type: SWITCH_ITEM_TO_MAIN_MODE, payload,
 });
+export const openModalAction = (payload) => ({ type: OPEN_MODAL, payload });
+export const closeModalAction = () => ({ type: CLOSE_MODAL });
 export default reducer;

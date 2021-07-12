@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './MovieListItemInfo.module.scss';
 import { switchItemToMainModeAction } from '../../modules/reducer';
+import { fetchVideo } from '../../services/fetchingData';
 
 const MovieListItemInfo = ({
   id, title, rating, background, genres, overview,
@@ -28,7 +29,7 @@ const MovieListItemInfo = ({
           </div>
         </div>
         <p className={styles.aboutFilm}>{overview}</p>
-        <button type="button" className={styles.button}>
+        <button onClick={() => dispatch(fetchVideo(id))} type="button" className={styles.button}>
           Watch Now
         </button>
       </div>

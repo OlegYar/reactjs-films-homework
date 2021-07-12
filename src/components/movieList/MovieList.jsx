@@ -1,19 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadTrendingFilmsAction, loadGenresAction } from '../../modules/reducer';
-import TheMovieDbService from '../../services';
+import { fetchTrendingFilms, fetchGenres } from '../../services/fetchingData';
 import MovieListItem from '../movieListItem/MovieListItem';
 import styles from './MovieList.module.scss';
-
-const movieApi = new TheMovieDbService();
-
-const fetchTrendingFilms = (page) => (dispatch) => {
-  movieApi.getTrendingMovies(page).then((films) => dispatch(loadTrendingFilmsAction(films)));
-};
-
-const fetchGenres = () => (dispatch) => {
-  movieApi.getGenreList().then((genres) => dispatch(loadGenresAction(genres)));
-};
 
 const MovieList = () => {
   const dispatch = useDispatch();
