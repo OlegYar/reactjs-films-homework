@@ -4,7 +4,7 @@ import styles from './Stars.module.scss';
 
 const Stars = ({ rating }) => {
   const starsArray = [];
-  for (let i = 0; i < 5; i += 1) {
+  for (let i = 0; i < 10; i += 1) {
     const isFullStar = i < rating - 0.5 ? 'fas' : 'far';
     starsArray.push(<li key={i + 1} data-testid="star" className={styles.star}><i className={`${isFullStar} fa-star`}> </i></li>);
   }

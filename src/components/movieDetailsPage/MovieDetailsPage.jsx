@@ -1,7 +1,6 @@
 import React from 'react';
 import Search from '../search/Search';
 import MovieInfo from '../movieInfo/MovieInfo';
-import Button from '../button/Button';
 import Stars from '../stars/Stars';
 import AboutFilm from '../aboutFilm/AboutFilm';
 import styles from './MovieDetailsPage.module.scss';
@@ -22,8 +21,12 @@ const MovieDetailsPage = () => (
         <Stars rating={4.3} />
       </div>
       <div className={styles.buttonWrapper}>
-        <Button value="Watch Now" />
-        <Button value="View Info" />
+        <button type="button" className={styles.button}>
+          Watch Now
+        </button>
+        <button type="button" className={styles.button}>
+          View Info
+        </button>
       </div>
     </div>
     <AboutFilm
