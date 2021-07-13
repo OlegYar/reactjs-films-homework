@@ -14,6 +14,16 @@ export default class TheMovieDbService {
       return res.results.map(this.transformMovies);
     }
 
+    async getMainMovie() {
+      const res = await this.getResorce('/trending/movie/day?api_key=95ba99e0f191e9eabd8a1d0c164f0af3');
+      return this.transformMovies(res.results[0]);
+    }
+
+    async getRuntimeOfMovie(id) {
+      const res = await this.getResorce(`/movie/${id}?api_key=95ba99e0f191e9eabd8a1d0c164f0af3&language=en-US`);
+      return res.runtime;
+    }
+
     async getGenreList() {
       const res = await this.getResorce('/genre/movie/list?api_key=95ba99e0f191e9eabd8a1d0c164f0af3&language=en-US');
       return res.genres;
