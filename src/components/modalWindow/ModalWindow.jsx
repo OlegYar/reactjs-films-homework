@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './ModalWindow.module.scss';
 import { closeModalAction } from '../../modules/reducer';
@@ -6,10 +6,16 @@ import { closeModalAction } from '../../modules/reducer';
 const ModalWindow = () => {
   const dispatch = useDispatch();
   const key = useSelector((state) => state.modalWindow.key);
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'scroll';
+    };
+  });
   const video = (
     <iframe
-      width="70%"
-      height="60%"
+      width="100%"
+      height="100%"
       src={`https://www.youtube.com/embed/${key}`}
       title="YouTube video player"
       frameBorder="0"
