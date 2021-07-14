@@ -10,14 +10,13 @@ const App = () => {
   const dispatch = useDispatch();
   const isModalActive = useSelector((state) => state.modalWindow.isModalActive);
   const mainMovie = useSelector((state) => state.mainFilm);
-  const genres = useSelector((state) => state.genres);
   useEffect(() => {
-    dispatch(fetchMainFilm());
+    dispatch(fetchMainFilm(550));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div>
-      { mainMovie ? <MovieDetailsPage movie={mainMovie[0]} genres={genres} /> : null }
+      { mainMovie ? <MovieDetailsPage movie={mainMovie[0]} /> : null }
       <MovieList />
       { isModalActive ? <ModalWindow /> : null }
     </div>

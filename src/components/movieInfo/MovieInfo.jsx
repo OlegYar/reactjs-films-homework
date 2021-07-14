@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './MovieInfo.module.scss';
 
 const MovieInfo = ({
-  title, genreList, genreIds, duration,
+  title, genres, duration,
 }) => {
   function getTimeFromMinutes(min) {
     const hours = Math.trunc(min / 60);
@@ -17,13 +17,13 @@ const MovieInfo = ({
       </h2>
       <div className={styles.aboutFilm}>
         <ul className={styles.list}>
-          {genreList.map((item, index) => (
+          {genres.map((item) => (
             <li
-              key={genreIds[index]}
+              key={item.id}
               data-testid="genre"
               className={styles.listItem}
             >
-              {item}
+              {item.name}
             </li>
           ))}
         </ul>
@@ -40,8 +40,10 @@ const MovieInfo = ({
 
 MovieInfo.propTypes = {
   title: PropTypes.string.isRequired,
-  genreList: PropTypes.arrayOf(PropTypes.string).isRequired,
-  genreIds: PropTypes.arrayOf(PropTypes.number).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+  })).isRequired,
   duration: PropTypes.number,
 };
 

@@ -14,14 +14,9 @@ export default class TheMovieDbService {
       return res.results.map(this.transformMovies);
     }
 
-    async getMainMovie() {
-      const res = await this.getResorce('/trending/movie/day?api_key=95ba99e0f191e9eabd8a1d0c164f0af3');
-      return this.transformMovies(res.results[0]);
-    }
-
-    async getRuntimeOfMovie(id) {
+    async getMainMovie(id) {
       const res = await this.getResorce(`/movie/${id}?api_key=95ba99e0f191e9eabd8a1d0c164f0af3&language=en-US`);
-      return res.runtime;
+      return this.transformMovies(res);
     }
 
     async getGenreList() {
@@ -44,7 +39,10 @@ export default class TheMovieDbService {
         title: movie.title,
         rating: movie.vote_average,
         posterPath: movie.poster_path,
+        backdropPath: movie.backdrop_path,
+        runtime: movie.runtime,
         genreIds: movie.genre_ids,
+        genres: movie.genres,
         overview: movie.overview,
       }
     )

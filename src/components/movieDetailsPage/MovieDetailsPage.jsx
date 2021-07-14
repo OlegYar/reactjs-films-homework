@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import Search from '../search/Search';
@@ -7,28 +7,19 @@ import Stars from '../stars/Stars';
 import AboutFilm from '../aboutFilm/AboutFilm';
 import styles from './MovieDetailsPage.module.scss';
 import { switchAboutFilm } from '../../modules/reducer';
-import { fetchVideo, fetchRuntimeOfFilm } from '../../services/fetchingData';
+import { fetchVideo } from '../../services/fetchingData';
 
-const MovieDetailsPage = ({ movie, genres }) => {
+const MovieDetailsPage = ({ movie }) => {
   const dispatch = useDispatch();
   const isAboutFilmActive = useSelector((state) => state.mainFilm[0].isAboutFilmActive);
   const {
-    id, title, rating, posterPath, overview, genreIds,
+    id, title, rating, runtime, backdropPath, overview, genres,
   } = movie;
-  const runtime = useSelector((state) => state.runtimeFilm);
   const movieBackground = {
-    background: `url(https://image.tmdb.org/t/p/original/${posterPath}) no-repeat center top / contain`,
+    background: `url(https://image.tmdb.org/t/p/original/${backdropPath}) no-repeat center top / cover`,
   };
-  let genreArr = '';
-  if (genres) {
-    genreArr = genreIds.map((itemId) => genres.find((g) => g.id === itemId).name);
-  }
-  useEffect(() => {
-    dispatch(fetchRuntimeOfFilm(id));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
   return (
-    <div style={movieBackground} className={styles.wrapper}>
+    <div id="movieDetails" style={movieBackground} className={styles.wrapper}>
       <div className={styles.header}>
         <span data-testid="logo" className={styles.logo}>
           FILMS
@@ -39,8 +30,7 @@ const MovieDetailsPage = ({ movie, genres }) => {
         <div className={styles.filmInfo}>
           <MovieInfo
             title={title}
-            genreList={genreArr}
-            genreIds={genreIds}
+            genres={genres}
             duration={runtime}
           />
           <Stars rating={rating} />
@@ -64,15 +54,14 @@ MovieDetailsPage.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string,
     rating: PropTypes.number,
-    posterPath: PropTypes.string,
-    genreIds: PropTypes.arrayOf(PropTypes.number),
+    backdropPath: PropTypes.string,
+    runtime: PropTypes.number,
+    genres: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+    })).isRequired,
     overview: PropTypes.string.isRequired,
   }).isRequired,
-  genres: PropTypes.arrayOf(PropTypes.object),
-};
-
-MovieDetailsPage.defaultProps = {
-  genres: null,
 };
 
 export default MovieDetailsPage;
