@@ -1,6 +1,8 @@
 const initialState = {
   films: [],
+  loadingFilms: true,
   mainFilm: null,
+  loadingMainFilm: true,
   genres: null,
   modalWindow: {
     isModalActive: false,
@@ -23,9 +25,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         films: [...state.films, ...action.payload],
+        loadingFilms: false,
       };
     case LOAD_MAIN_FILM:
-      return { ...state, mainFilm: [{ ...action.payload, isAboutFilmActive: false }] };
+      return {
+        ...state,
+        mainFilm: [{ ...action.payload, isAboutFilmActive: false }],
+        loadingMainFilm: false,
+      };
     case SWITCH_ABOUT_FILM:
       return {
         ...state,

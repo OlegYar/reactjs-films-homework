@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import Search from '../search/Search';
@@ -7,7 +7,24 @@ import Stars from '../stars/Stars';
 import AboutFilm from '../aboutFilm/AboutFilm';
 import styles from './MovieDetailsPage.module.scss';
 import { switchAboutFilm } from '../../modules/reducer';
-import { fetchVideo } from '../../services/fetchingData';
+import { fetchVideo, fetchMainFilm } from '../../services/fetchingData';
+import Spinner from '../spinner/Spinner';
+
+const MovieDetailsPageContainer = () => {
+  const dispatch = useDispatch();
+  const firstMovieId = useSelector((state) => state.films[0].id);
+  const mainFilm = useSelector((state) => state.mainFilm);
+  const isLoaded = useSelector((state) => state.loadingMainFilm);
+  useEffect(() => {
+    dispatch(fetchMainFilm(firstMovieId));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return (
+    <>
+      { isLoaded ? <Spinner /> : <MovieDetailsPage movie={mainFilm[0]} /> }
+    </>
+  );
+};
 
 const MovieDetailsPage = ({ movie }) => {
   const dispatch = useDispatch();
@@ -18,6 +35,9 @@ const MovieDetailsPage = ({ movie }) => {
   const movieBackground = {
     background: `url(https://image.tmdb.org/t/p/original/${backdropPath}) no-repeat center top / cover`,
   };
+  useEffect(() => {
+
+  }, []);
   return (
     <div id="movieDetails" style={movieBackground} className={styles.wrapper}>
       <div className={styles.header}>
@@ -64,4 +84,4 @@ MovieDetailsPage.propTypes = {
   }).isRequired,
 };
 
-export default MovieDetailsPage;
+export default MovieDetailsPageContainer;

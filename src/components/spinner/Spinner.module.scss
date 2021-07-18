@@ -1,0 +1,77 @@
+@keyframes ldio-xmxdver9tm {
+   0% { transform: translate(7.4399999999999995px,49.6px) scale(0); }
+  25% { transform: translate(7.4399999999999995px,49.6px) scale(0); }
+  50% { transform: translate(7.4399999999999995px,49.6px) scale(1); }
+  75% { transform: translate(49.6px,49.6px) scale(1); }
+ 100% { transform: translate(91.76px,49.6px) scale(1); }
+}
+@keyframes ldio-xmxdver9tm-r {
+   0% { transform: translate(91.76px,49.6px) scale(1); }
+ 100% { transform: translate(91.76px,49.6px) scale(0); }
+}
+@keyframes ldio-xmxdver9tm-c {
+   0% { background: #0aaee4 }
+  25% { background: #0aaee4 }
+  50% { background: #0aaee4 }
+  75% { background: #0aaee4 }
+ 100% { background: #0aaee4 }
+}
+.ldioXmxdver9tm div {
+  position: absolute;
+  width: 24.8px;
+  height: 24.8px;
+  border-radius: 50%;
+  transform: translate(49.6px,49.6px) scale(1);
+  background: #0aaee4;
+  animation: ldio-xmxdver9tm 3.571428571428571s infinite cubic-bezier(0,0.5,0.5,1);
+}
+.ldioXmxdver9tm div:nth-child(1) {
+  background: #0aaee4;
+  transform: translate(91.76px,49.6px) scale(1);
+  animation: ldio-xmxdver9tm-r 0.8928571428571428s infinite cubic-bezier(0,0.5,0.5,1), ldio-xmxdver9tm-c 3.571428571428571s infinite step-start;
+}.ldioXmxdver9tm div:nth-child(2) {
+  animation-delay: -0.8928571428571428s;
+  background: #0aaee4;
+}.ldioXmxdver9tm div:nth-child(3) {
+  animation-delay: -1.7857142857142856s;
+  background: #0aaee4;
+}.ldioXmxdver9tm div:nth-child(4) {
+  animation-delay: -2.6785714285714284s;
+  background: #0aaee4;
+}.ldioXmxdver9tm div:nth-child(5) {
+  animation-delay: -3.571428571428571s;
+  background: #0aaee4;
+}
+.loadingioSpinnerEllipsisRyv0m5rdcie {
+  width: 124px;
+  height: 124px;
+  display: inline-block;
+  overflow: hidden;
+  background: none;
+}
+.ldioXmxdver9tm {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldioXmxdver9tm div { box-sizing: content-box; }
+
+
+.container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  position: absolute;
+  font-size: 20px;
+  color: gray;
+  bottom: 15px;
+}
