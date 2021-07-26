@@ -1,6 +1,7 @@
 import TheMovieDbService from '.';
 import {
   openModalAction, loadGenresAction, loadTrendingFilmsAction, loadMainFilmAction,
+  loadSearchResultsAction,
 } from '../modules/reducer';
 
 const movieApi = new TheMovieDbService();
@@ -11,6 +12,10 @@ export const fetchVideo = (id) => (dispatch) => {
 
 export const fetchTrendingFilms = (page) => (dispatch) => {
   movieApi.getTrendingMovies(page).then((films) => dispatch(loadTrendingFilmsAction(films)));
+};
+
+export const fetchSearchResults = (query, page) => (dispatch) => {
+  movieApi.getSearchResults(query, page).then((films) => dispatch(loadSearchResultsAction(films)));
 };
 
 export const fetchMainFilm = (id) => (dispatch) => {

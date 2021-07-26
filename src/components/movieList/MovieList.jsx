@@ -1,15 +1,12 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchTrendingFilms, fetchGenres } from '../../services/fetchingData';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import MovieListItem from '../movieListItem/MovieListItem';
 import Spinner from '../spinner/Spinner';
 import styles from './MovieList.module.scss';
 
-const MovieList = () => {
-  const dispatch = useDispatch();
-  const films = useSelector((state) => state.films);
+const MovieList = ({ films, genres }) => {
   const isFilmLoaded = useSelector((state) => state.loadingFilms);
-  const genres = useSelector((state) => state.genres);
   const movieCards = films
     ? films.map((movie) => (
       <li key={movie.id} className={styles.movieListItem}>
@@ -18,18 +15,6 @@ const MovieList = () => {
     ))
     : null;
   const spinner = isFilmLoaded ? <Spinner /> : null;
-  /* if (films) {
-    movieCards = films.map((movie) => (
-      <li key={movie.id} className={styles.movieListItem}>
-        <MovieListItem movie={movie} genres={genres} />
-      </li>
-    ));
-  } */
-  useEffect(() => {
-    dispatch(fetchTrendingFilms(1));
-    dispatch(fetchGenres());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   return (
     <div className={styles.movieListContainer}>
       <ul className={styles.movieList}>
@@ -38,6 +23,16 @@ const MovieList = () => {
       </ul>
     </div>
   );
+};
+
+MovieList.propTypes = {
+  films: PropTypes.arrayOf(PropTypes.object),
+  genres: PropTypes.arrayOf(PropTypes.object),
+};
+
+MovieList.defaultProps = {
+  films: null,
+  genres: null,
 };
 
 export default MovieList;
