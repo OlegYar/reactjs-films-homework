@@ -12,7 +12,9 @@ const Search = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          dispatch(fetchSearchResults(searchValue, 1));
+          if (searchValue) {
+            dispatch(fetchSearchResults(searchValue, 1));
+          }
         }}
         className={styles.searchForm}
       >

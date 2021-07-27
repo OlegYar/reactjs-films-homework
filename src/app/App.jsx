@@ -5,13 +5,15 @@ import MovieDetailsPageContainer from '../components/movieDetailsPage';
 import Spinner from '../components/spinner/Spinner';
 import MovieList from '../components/movieList';
 import { fetchTrendingFilms, fetchGenres } from '../services/fetchingData';
+import { switchLoadingFilmsToTrueAction } from '../modules/reducer';
 import styles from './App.module.scss';
 
 const App = () => {
   const dispatch = useDispatch();
   const isModalActive = useSelector((state) => state.modalWindow.isModalActive);
-  const isLoaded = useSelector((state) => state.loadingFilms);
+  const isLoading = useSelector((state) => state.loadingFilms);
   const films = useSelector((state) => state.films);
+  const currentPage = useSelector((state) => state.currentPage);
   const genres = useSelector((state) => state.genres);
   const searchResults = useSelector((state) => state.searchFilms);
   const noResults = (
@@ -20,6 +22,15 @@ const App = () => {
       <p className={styles.sorryText}>There&apos;s no results</p>
     </div>
   );
+  const scrollHandler = (e) => {
+    if (
+      e.target.documentElement.scrollHeight - (
+        e.target.documentElement.scrollTop + window.innerHeight
+      ) < 100
+    ) {
+      dispatch(switchLoadingFilmsToTrueAction());
+    }
+  };
   const searchResultsContent = searchResults[0] ? (
     <MovieList films={searchResults} genres={genres} />
   ) : (
@@ -27,13 +38,22 @@ const App = () => {
   );
   const isSearch = useSelector((state) => state.isSearch);
   useEffect(() => {
-    dispatch(fetchTrendingFilms(1));
+    if (isLoading) {
+      dispatch(fetchTrendingFilms(currentPage));
+    }
     dispatch(fetchGenres());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
+  useEffect(() => {
+    document.addEventListener('scroll', scrollHandler);
+    return () => {
+      document.removeEventListener('scroll', scrollHandler);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div>
-      {isLoaded ? <Spinner /> : <MovieDetailsPageContainer />}
+      {isLoading ? <Spinner /> : <MovieDetailsPageContainer />}
       {isSearch ? searchResultsContent : <MovieList films={films} genres={genres} />}
       {isModalActive ? <ModalWindow /> : null}
     </div>

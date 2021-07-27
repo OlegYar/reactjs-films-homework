@@ -1,5 +1,6 @@
 const initialState = {
   films: [],
+  currentPage: 1,
   searchFilms: [],
   isSearch: false,
   loadingFilms: true,
@@ -15,7 +16,8 @@ const initialState = {
 
 const LOAD_TRENDING_FILMS = 'LOAD_TRENDING_FILMS';
 const CHANGE_SEARCH_VALUE = 'CHANGE_SEARCH_VALUE';
-const CLEAN_FILMS = 'CLEAN_FILMS';
+const SWITCH_LOADING_FILMS_TO_TRUE = 'SWITCH_LOADING_FILMS_TO_TRUE';
+const CHANGE_CURRENT_PAGE = 'CHANGE_CURRENT_PAGE';
 const LOAD_SEARCH_RESULTS = 'LOAD_SEARCH_RESULTS';
 const LOAD_MAIN_FILM = 'LOAD_MAIN_FILM';
 const SWITCH_ABOUT_FILM = 'SWITCH_ABOUT_FILM';
@@ -33,16 +35,20 @@ const reducer = (state = initialState, action) => {
         films: [...state.films, ...action.payload],
         loadingFilms: false,
       };
+    case SWITCH_LOADING_FILMS_TO_TRUE:
+      return {
+        ...state,
+        loadingFilms: true,
+      };
+    case CHANGE_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: state.currentPage + 1,
+      };
     case CHANGE_SEARCH_VALUE:
       return {
         ...state,
         searchValue: action.payload,
-      };
-    case CLEAN_FILMS:
-      return {
-        ...state,
-        films: [],
-        loadingFilms: true,
       };
     case LOAD_SEARCH_RESULTS:
       return {
@@ -102,8 +108,9 @@ const reducer = (state = initialState, action) => {
 };
 
 export const loadTrendingFilmsAction = (payload) => ({ type: LOAD_TRENDING_FILMS, payload });
+export const switchLoadingFilmsToTrueAction = () => ({ type: SWITCH_LOADING_FILMS_TO_TRUE });
+export const changeCurrentPageAction = () => ({ type: CHANGE_CURRENT_PAGE });
 export const changeSearchValueAction = (payload) => ({ type: CHANGE_SEARCH_VALUE, payload });
-export const cleanFilmsAction = () => ({ type: CLEAN_FILMS });
 export const loadSearchResultsAction = (payload) => ({ type: LOAD_SEARCH_RESULTS, payload });
 export const loadMainFilmAction = (payload) => ({ type: LOAD_MAIN_FILM, payload });
 export const switchAboutFilm = () => ({ type: SWITCH_ABOUT_FILM });
