@@ -7,6 +7,7 @@ import MovieList from '../components/movieList';
 import { fetchTrendingFilms, fetchGenres } from '../services/fetchingData';
 import { switchLoadingFilmsToTrueAction } from '../modules/reducer';
 import styles from './App.module.scss';
+import MovieTabs from '../components/movieTabs/MovieTabs';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ const App = () => {
   return (
     <div>
       {isLoading ? <Spinner /> : <MovieDetailsPageContainer />}
+      <MovieTabs />
       {isSearch ? searchResultsContent : <MovieList films={films} genres={genres} />}
       {isModalActive ? <ModalWindow /> : null}
     </div>

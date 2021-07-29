@@ -1,0 +1,23 @@
+.movieTabsContainer {
+    width: 100%;
+    padding: 15px 100px;
+    background-color: #f5f6f6;
+}
+
+.movieTabsContainer nav {
+    padding: 10px 0;
+    border-bottom: 1px solid grey;
+}
+
+.movieTabs {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 370px;
+}
+
+.movieTabs a {
+    color: #0aaee4;
+    font-size: 21px;
+    text-decoration: none;
+}
