@@ -1,7 +1,7 @@
 import TheMovieDbService from '.';
 import {
-  openModalAction, loadGenresAction, loadTrendingFilmsAction, loadMainFilmAction,
-  loadSearchResultsAction, changeCurrentPageAction,
+  openModalAction, loadGenresAction, loadFilmsAction, loadMainFilmAction,
+  loadSearchResultsAction, changeCurrentPageAction, getLatestFilmIdAction,
 } from '../modules/reducer';
 
 const movieApi = new TheMovieDbService();
@@ -10,9 +10,9 @@ export const fetchVideo = (id) => (dispatch) => {
   movieApi.getVideo(id).then((key) => dispatch(openModalAction(key)));
 };
 
-export const fetchTrendingFilms = (page) => (dispatch) => {
-  movieApi.getTrendingMovies(page).then((films) => {
-    dispatch(loadTrendingFilmsAction(films));
+export const fetchFilms = (type, page) => (dispatch) => {
+  movieApi.getMovies(type, page).then((films) => {
+    dispatch(loadFilmsAction(films));
     dispatch(changeCurrentPageAction());
   });
 };
@@ -23,6 +23,10 @@ export const fetchSearchResults = (query, page) => (dispatch) => {
 
 export const fetchMainFilm = (id) => (dispatch) => {
   movieApi.getMainMovie(id).then((movie) => dispatch(loadMainFilmAction(movie)));
+};
+
+export const fetchLatesFilmId = () => (dispatch) => {
+  movieApi.getLatestMovieId().then((id) => dispatch(getLatestFilmIdAction(id)));
 };
 
 export const fetchGenres = () => (dispatch) => {

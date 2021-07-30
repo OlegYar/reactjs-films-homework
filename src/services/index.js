@@ -9,8 +9,8 @@ export default class TheMovieDbService {
       return res.json();
     }
 
-    async getTrendingMovies(pageNumber) {
-      const res = await this.getResorce(`/movie/popular?api_key=95ba99e0f191e9eabd8a1d0c164f0af3&language=en-US&page=${pageNumber}`);
+    async getMovies(type, pageNumber) {
+      const res = await this.getResorce(`/movie/${type}?api_key=95ba99e0f191e9eabd8a1d0c164f0af3&language=en-US&page=${pageNumber}`);
       return res.results.map(this.transformMovies);
     }
 
@@ -22,6 +22,11 @@ export default class TheMovieDbService {
     async getMainMovie(id) {
       const res = await this.getResorce(`/movie/${id}?api_key=95ba99e0f191e9eabd8a1d0c164f0af3&language=en-US`);
       return this.transformMovies(res);
+    }
+
+    async getLatestMovieId() {
+      const res = await this.getResorce('/movie/popular?api_key=95ba99e0f191e9eabd8a1d0c164f0af3&language=en-US&page=1');
+      return res.results[0].id;
     }
 
     async getGenreList() {
