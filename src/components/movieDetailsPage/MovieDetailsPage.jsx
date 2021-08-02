@@ -7,7 +7,7 @@ import MovieInfo from '../movieInfo/MovieInfo';
 import Stars from '../stars/Stars';
 import AboutFilm from '../aboutFilm/AboutFilm';
 import styles from './MovieDetailsPage.module.scss';
-import { switchAboutFilm } from '../../modules/reducer';
+import { switchAboutFilmAction, switchTabAction } from '../../modules/reducer';
 import { fetchVideo, fetchMainFilm } from '../../services/fetchingData';
 import Spinner from '../spinner/Spinner';
 
@@ -38,7 +38,7 @@ const MovieDetailsPage = ({ movie }) => {
   return (
     <div id="movieDetails" style={movieBackground} className={styles.wrapper}>
       <div className={styles.header}>
-        <Link to="/" data-testid="logo" className={styles.logo}>
+        <Link onClick={() => dispatch(switchTabAction(1))} to="/" data-testid="logo" className={styles.logo}>
           FILMS
         </Link>
         <Search />
@@ -56,7 +56,7 @@ const MovieDetailsPage = ({ movie }) => {
           <button onClick={() => dispatch(fetchVideo(id))} type="button" className={styles.button}>
             Watch Now
           </button>
-          <button onClick={() => dispatch(switchAboutFilm())} type="button" className={styles.button}>
+          <button onClick={() => dispatch(switchAboutFilmAction())} type="button" className={styles.button}>
             View Info
           </button>
         </div>

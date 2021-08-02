@@ -11,6 +11,7 @@ import MovieTabs from '../components/movieTabs/MovieTabs';
 import MovieListContainer from '../components/movieListContainer/MovieListContainer';
 import SearchResults from '../components/searchResults/SearchResults';
 import MovieGenreList from '../components/movieGenreList/MovieGenreList';
+import Footer from '../components/footer/Footer';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -55,6 +56,7 @@ const App = () => {
             return <MovieGenreList genre={genre} />;
           }}
         />
+        <Footer />
         {isModalActive ? <ModalWindow /> : null}
       </Router>
     </div>

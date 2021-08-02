@@ -126,7 +126,7 @@ export const changeCurrentPageAction = () => ({ type: CHANGE_CURRENT_PAGE });
 export const changeSearchValueAction = (payload) => ({ type: CHANGE_SEARCH_VALUE, payload });
 export const loadMainFilmAction = (payload) => ({ type: LOAD_MAIN_FILM, payload });
 export const getLatestFilmIdAction = (payload) => ({ type: GET_LATEST_FILM_ID, payload });
-export const switchAboutFilm = () => ({ type: SWITCH_ABOUT_FILM });
+export const switchAboutFilmAction = () => ({ type: SWITCH_ABOUT_FILM });
 export const loadGenresAction = (payload) => ({ type: LOAD_GENRES, payload });
 export const switchItemToInfoModeAction = (payload) => ({
   type: SWITCH_ITEM_TO_INFO_MODE, payload,
