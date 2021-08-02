@@ -1,8 +1,6 @@
 const initialState = {
   films: [],
   currentPage: 1,
-  searchFilms: [],
-  isSearch: false,
   loadingFilms: true,
   searchValue: '',
   mainFilm: null,
@@ -63,9 +61,8 @@ const reducer = (state = initialState, action) => {
     case LOAD_SEARCH_RESULTS:
       return {
         ...state,
-        searchFilms: [...action.payload],
-        isSearch: true,
-        searchValue: '',
+        films: [...state.films, ...action.payload],
+        loadingFilms: false,
       };
     case LOAD_MAIN_FILM:
       return {

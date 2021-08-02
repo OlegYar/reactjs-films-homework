@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { history as historyPropTypes } from 'history-prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { changeSearchValueAction } from '../../modules/reducer';
-import { fetchSearchResults } from '../../services/fetchingData';
 import styles from './Search.module.scss';
 
-const Search = () => {
+const Search = ({ history }) => {
   const dispatch = useDispatch();
   const searchValue = useSelector((state) => state.searchValue);
   return (
@@ -13,7 +15,7 @@ const Search = () => {
         onSubmit={(e) => {
           e.preventDefault();
           if (searchValue) {
-            dispatch(fetchSearchResults(searchValue, 1));
+            history.push(`/search/${searchValue}`);
           }
         }}
         className={styles.searchForm}
@@ -31,4 +33,8 @@ const Search = () => {
   );
 };
 
-export default Search;
+Search.propTypes = {
+  history: PropTypes.shape(historyPropTypes).isRequired,
+};
+
+export default withRouter(Search);

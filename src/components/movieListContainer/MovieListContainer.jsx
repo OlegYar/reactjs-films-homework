@@ -16,7 +16,6 @@ const MovieListContainer = ({ listType }) => {
       dispatch(fetchFilms(listType, currentPage));
     }
     dispatch(fetchGenres());
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
   useEffect(() => () => {

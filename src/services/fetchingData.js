@@ -18,7 +18,10 @@ export const fetchFilms = (type, page) => (dispatch) => {
 };
 
 export const fetchSearchResults = (query, page) => (dispatch) => {
-  movieApi.getSearchResults(query, page).then((films) => dispatch(loadSearchResultsAction(films)));
+  movieApi.getSearchResults(query, page).then((films) => {
+    dispatch(loadSearchResultsAction(films));
+    dispatch(changeCurrentPageAction());
+  });
 };
 
 export const fetchMainFilm = (id) => (dispatch) => {
