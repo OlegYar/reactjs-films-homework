@@ -1,7 +1,7 @@
 import TheMovieDbService from '.';
 import {
   openModalAction, loadGenresAction, loadFilmsAction, loadMainFilmAction,
-  loadSearchResultsAction, changeCurrentPageAction, getLatestFilmIdAction,
+  changeCurrentPageAction, getLatestFilmIdAction,
 } from '../modules/reducer';
 
 const movieApi = new TheMovieDbService();
@@ -17,9 +17,16 @@ export const fetchFilms = (type, page) => (dispatch) => {
   });
 };
 
+export const fetchGenreFilms = (genre, page) => (dispatch) => {
+  movieApi.getGenreMovies(genre, page).then((films) => {
+    dispatch(loadFilmsAction(films));
+    dispatch(changeCurrentPageAction());
+  });
+};
+
 export const fetchSearchResults = (query, page) => (dispatch) => {
   movieApi.getSearchResults(query, page).then((films) => {
-    dispatch(loadSearchResultsAction(films));
+    dispatch(loadFilmsAction(films));
     dispatch(changeCurrentPageAction());
   });
 };

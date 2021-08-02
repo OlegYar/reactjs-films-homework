@@ -35,9 +35,6 @@ const MovieDetailsPage = ({ movie }) => {
   const movieBackground = {
     background: `url(https://image.tmdb.org/t/p/original/${backdropPath}) no-repeat center top / cover`,
   };
-  useEffect(() => {
-
-  }, []);
   return (
     <div id="movieDetails" style={movieBackground} className={styles.wrapper}>
       <div className={styles.header}>

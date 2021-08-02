@@ -10,6 +10,7 @@ import './App.scss';
 import MovieTabs from '../components/movieTabs/MovieTabs';
 import MovieListContainer from '../components/movieListContainer/MovieListContainer';
 import SearchResults from '../components/searchResults/SearchResults';
+import MovieGenreList from '../components/movieGenreList/MovieGenreList';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -45,6 +46,13 @@ const App = () => {
           render={({ match }) => {
             const { value } = match.params;
             return <SearchResults value={value} />;
+          }}
+        />
+        <Route
+          path="/genres/:genre"
+          render={({ match }) => {
+            const { genre } = match.params;
+            return <MovieGenreList genre={genre} />;
           }}
         />
         {isModalActive ? <ModalWindow /> : null}

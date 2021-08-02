@@ -14,6 +14,11 @@ export default class TheMovieDbService {
       return res.results.map(this.transformMovies);
     }
 
+    async getGenreMovies(genre, pageNumber) {
+      const res = await this.getResorce(`/movie/popular?api_key=95ba99e0f191e9eabd8a1d0c164f0af3&with_genres=${genre}&language=en-US&page=${pageNumber}`);
+      return res.results.map(this.transformMovies);
+    }
+
     async getSearchResults(query, pageNumber) {
       const res = await this.getResorce(`/search/movie?api_key=95ba99e0f191e9eabd8a1d0c164f0af3&language=en-US&query=${query}&page=${pageNumber}&include_adult=false`);
       return res.results.map(this.transformMovies);
