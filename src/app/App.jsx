@@ -35,31 +35,29 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div>
-      <Router>
-        {!latestFilmId ? <Spinner /> : <MovieDetailsPageContainer latestFilmId={latestFilmId} />}
-        <MovieTabs />
-        <Route path="/" render={() => <MovieListContainer listType="popular" />} exact />
-        <Route path="/top_rated" render={() => <MovieListContainer listType="top_rated" />} />
-        <Route path="/upcoming" render={() => <MovieListContainer listType="upcoming" />} />
-        <Route
-          path="/search/:value"
-          render={({ match }) => {
-            const { value } = match.params;
-            return <SearchResults value={value} />;
-          }}
-        />
-        <Route
-          path="/genres/:genre"
-          render={({ match }) => {
-            const { genre } = match.params;
-            return <MovieGenreList genre={genre} />;
-          }}
-        />
-        <Footer />
-        {isModalActive ? <ModalWindow /> : null}
-      </Router>
-    </div>
+    <Router>
+      {!latestFilmId ? <Spinner /> : <MovieDetailsPageContainer latestFilmId={latestFilmId} />}
+      <MovieTabs />
+      <Route path="/" render={() => <MovieListContainer listType="popular" />} exact />
+      <Route path="/top_rated" render={() => <MovieListContainer listType="top_rated" />} />
+      <Route path="/upcoming" render={() => <MovieListContainer listType="upcoming" />} />
+      <Route
+        path="/search/:value"
+        render={({ match }) => {
+          const { value } = match.params;
+          return <SearchResults value={value} />;
+        }}
+      />
+      <Route
+        path="/genres/:genre"
+        render={({ match }) => {
+          const { genre } = match.params;
+          return <MovieGenreList genre={genre} />;
+        }}
+      />
+      <Footer />
+      {isModalActive ? <ModalWindow /> : null}
+    </Router>
   );
 };
 
