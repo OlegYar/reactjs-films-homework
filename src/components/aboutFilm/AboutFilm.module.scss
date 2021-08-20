@@ -4,17 +4,29 @@
     background: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     position: absolute;
-    right: 20px;
     bottom: 100px;
+    right: 20px;
     padding: 20px;
     display: block;
     overflow: auto;
+    @media (max-width: 899px) {
+        top: 120px;
+        right: initial;
+    }
+    @media (max-width: 599px) {
+        width: 250px;
+        height: 155px;
+    }
 }
 
 .description {
     color: white;
     font-size: 17px;
     line-height: 1.7;
+    @media (max-width: 599px) {
+        font-size: 15px;
+        line-height: initial;
+    }
 }
 
 .container::-webkit-scrollbar {

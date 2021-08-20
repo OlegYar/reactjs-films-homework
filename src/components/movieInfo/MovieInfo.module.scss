@@ -7,6 +7,9 @@
     color: white;
     font-size: 45px;
     font-weight: 700;
+    @media (max-width: 599px) {
+      font-size: 25px;
+    }
 }
 
 .aboutFilm {
@@ -16,6 +19,7 @@
 .list {
     list-style: none;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .listItem,

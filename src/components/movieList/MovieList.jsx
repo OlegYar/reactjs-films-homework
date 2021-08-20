@@ -19,8 +19,8 @@ const MovieList = ({ films, genres }) => {
     <div className={styles.movieListContainer}>
       <ul className={styles.movieList}>
         {movieCards}
-        {spinner}
       </ul>
+      {spinner}
     </div>
   );
 };

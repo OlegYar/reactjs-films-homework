@@ -24,21 +24,21 @@ const MovieTabs = ({ history }) => {
           <li style={activeTab === 1 ? activeStyle : null}><Link onClick={() => handleClick(1)} to="/">Trending</Link></li>
           <li style={activeTab === 2 ? activeStyle : null}><Link onClick={() => handleClick(2)} to="/top_rated">Top Rated</Link></li>
           <li style={activeTab === 3 ? activeStyle : null}><Link onClick={() => handleClick(3)} to="/upcoming">Coming Soon</Link></li>
-          <li style={activeTab === 4 ? activeStyle : null} className={styles.selectContainer}>
-            <select
-              className={styles.select}
-              onChange={(e) => {
-                const genre = e.target.value;
-                const genreId = genres.find((el) => el.name === genre).id;
-                handleClick(4);
-                history.push(`/genres/${genreId}`);
-              }}
-            >
-              <option hidden>Genre</option>
-              { genres ? genres.map((genre) => <option key={genre.id}>{genre.name}</option>) : null}
-            </select>
-          </li>
         </ul>
+        <div style={activeTab === 4 ? activeStyle : null} className={styles.selectContainer}>
+          <select
+            className={styles.select}
+            onChange={(e) => {
+              const genre = e.target.value;
+              const genreId = genres.find((el) => el.name === genre).id;
+              handleClick(4);
+              history.push(`/genres/${genreId}`);
+            }}
+          >
+            <option hidden>Genre</option>
+            { genres ? genres.map((genre) => <option key={genre.id}>{genre.name}</option>) : null}
+          </select>
+        </div>
       </nav>
     </div>
   );

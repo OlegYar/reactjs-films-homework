@@ -10,8 +10,11 @@
   }
 
 .searchForm {
-    width: 330px;
-    position: relative;
+  width: 280px;
+  position: relative;
+  @media (max-width: 599px) {
+    width: 250px;
+  }
 }
 
 .searchInput, .searchButton {

@@ -3,7 +3,9 @@
     height: 525px;
     border-radius: 10px 10px 0 0;
     background-color: white;
-    margin-top: 20px;
+    @media (max-width: 599px) {
+        width: 270px;
+    }
 }
 
 .movieCardCover {

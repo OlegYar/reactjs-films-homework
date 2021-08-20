@@ -2,38 +2,68 @@
     width: 100%;
     padding: 0 100px;
     background-color: #f5f6f6;
+    @media (max-width: 599px) {
+        padding: 0 50px;
+    }
 }
 
 .movieTabsContainer nav {
-    padding-top: 15px;
     border-bottom: 1px solid grey;
+    display: flex;
+    @media (max-width: 599px) {
+        border-bottom: none;
+        flex-direction: column;
+    }
 }
 
 .movieTabs {
     list-style: none;
     display: flex;
-    justify-content: space-between;
-    width: 560px;
 }
 
 .movieTabs a {
     color: #0aaee4;
-    font-size: 21px;
+    font-size: 17px;
     text-decoration: none;
+    @media (max-width: 599px) {
+        font-size: 15px;
+    }
 }
 
 .movieTabs li {
-    padding-bottom: 15px;
+    padding: 15px 0;
+    padding-right: 15px;
+    @media (max-width: 599px) {
+        background-color: rgba(0,0,0,0.15);
+        padding: 10px 0;
+        padding-right: 0;
+        text-align: center;
+        border-radius: 10px;
+        width: 33%;
+        margin: 8px 2px;
+    }
 }
 
 .selectContainer {
-    position: relative;
+    display: inline-block;
+    @media (max-width: 599px) {
+        width: 100%;
+        background-color: rgba(0,0,0,0.15);
+        border-radius: 10px;
+        text-align: center;
+    }
 }
 
 .select {
+    width: 95px;
+    padding: 15px 0;
+    text-overflow: ellipsis;
     background: none;
     border: none;
     color: #0aaee4;
-    font-size: 21px;
+    font-size: 17px;
     cursor: pointer;
+    @media (max-width: 599px) {
+        padding: 10px 0;
+    }
 }

@@ -1,12 +1,16 @@
 .movieListContainer {
     width: 100%;
-    padding: 0 100px 30px;
+    padding: 20px 100px 30px;
     background-color: #f5f6f6;
+    @media (max-width: 599px) {
+        padding: 20px 50px 30px;
+      }
 }
 
 .movieList {
     list-style: none;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 300px));
+    gap: 20px;
 }
