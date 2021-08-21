@@ -7,7 +7,7 @@ import MovieInfo from '../movieInfo/MovieInfo';
 import Stars from '../stars/Stars';
 import AboutFilm from '../aboutFilm/AboutFilm';
 import styles from './MovieDetailsPage.module.scss';
-import { switchAboutFilmAction, switchTabAction } from '../../modules/reducer';
+import { switchAboutFilmAction, switchTabAction } from '../../modules/actions';
 import { fetchVideo, fetchMainFilm } from '../../services/fetchingData';
 import Spinner from '../spinner/Spinner';
 

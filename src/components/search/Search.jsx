@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { history as historyPropTypes } from 'history-prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { changeSearchValueAction } from '../../modules/reducer';
+import { changeSearchValueAction } from '../../modules/actions';
 import styles from './Search.module.scss';
 
 const Search = ({ history }) => {

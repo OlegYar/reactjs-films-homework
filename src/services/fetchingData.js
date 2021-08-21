@@ -2,7 +2,7 @@ import TheMovieDbService from '.';
 import {
   openModalAction, loadGenresAction, loadFilmsAction, loadMainFilmAction,
   changeCurrentPageAction, getLatestFilmIdAction,
-} from '../modules/reducer';
+} from '../modules/actions';
 
 const movieApi = new TheMovieDbService();
 

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import ModalWindow from '../components/modalWindow/ModalWindow';
 import MovieDetailsPageContainer from '../components/movieDetailsPage';
 import Spinner from '../components/spinner/Spinner';
-import { switchLoadingFilmsToTrueAction } from '../modules/reducer';
+import { switchLoadingFilmsToTrueAction } from '../modules/actions';
 import { fetchLatesFilmId } from '../services/fetchingData';
 import './App.scss';
 import MovieTabs from '../components/movieTabs/MovieTabs';

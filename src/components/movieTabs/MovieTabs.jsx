@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { history as historyPropTypes } from 'history-prop-types';
 import styles from './MovieTabs.module.scss';
-import { switchTabAction } from '../../modules/reducer';
+import { switchTabAction } from '../../modules/actions';
 
 const MovieTabs = ({ history }) => {
   const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSearchResults, fetchGenres } from '../../services/fetchingData';
-import { cleanFilmsAction } from '../../modules/reducer';
+import { cleanFilmsAction } from '../../modules/actions';
 import MovieList from '../movieList/MovieList';
 import styles from './SearchResults.module.scss';
 

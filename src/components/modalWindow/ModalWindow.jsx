@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './ModalWindow.module.scss';
-import { closeModalAction } from '../../modules/reducer';
+import { closeModalAction } from '../../modules/actions';
 
 const ModalWindow = () => {
   const dispatch = useDispatch();

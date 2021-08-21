@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './MovieListItemInfo.module.scss';
-import { switchItemToMainModeAction } from '../../modules/reducer';
+import { switchItemToMainModeAction } from '../../modules/actions';
 import { fetchVideo, fetchMainFilm } from '../../services/fetchingData';
 
 const MovieListItemInfo = ({

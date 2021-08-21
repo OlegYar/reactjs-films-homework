@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchFilms, fetchGenres } from '../../services/fetchingData';
 import MovieList from '../movieList/MovieList';
-import { cleanFilmsAction } from '../../modules/reducer';
+import { cleanFilmsAction } from '../../modules/actions';
 
 const MovieListContainer = ({ listType }) => {
   const dispatch = useDispatch();
