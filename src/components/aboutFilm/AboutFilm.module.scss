@@ -12,10 +12,12 @@
     @media (max-width: 899px) {
         top: 120px;
         right: initial;
+        padding: 10px;
     }
     @media (max-width: 599px) {
+        top: 90px;
         width: 250px;
-        height: 155px;
+        height: 110px;
     }
 }
 
