@@ -1,44 +1,45 @@
-import TheMovieDbService from '.';
 import {
   openModalAction, loadGenresAction, loadFilmsAction, loadMainFilmAction,
   changeCurrentPageAction, getLatestFilmIdAction,
 } from '../modules/actions';
-
-const movieApi = new TheMovieDbService();
+import {
+  getMovies, getGenreMovies, getSearchResults, getMainMovie,
+  getLatestMovieId, getGenreList, getVideo,
+} from '.';
 
 export const fetchVideo = (id) => (dispatch) => {
-  movieApi.getVideo(id).then((key) => dispatch(openModalAction(key)));
+  getVideo(id).then((key) => dispatch(openModalAction(key)));
 };
 
 export const fetchFilms = (type, page) => (dispatch) => {
-  movieApi.getMovies(type, page).then((films) => {
+  getMovies(type, page).then((films) => {
     dispatch(loadFilmsAction(films));
     dispatch(changeCurrentPageAction());
   });
 };
 
 export const fetchGenreFilms = (genre, page) => (dispatch) => {
-  movieApi.getGenreMovies(genre, page).then((films) => {
+  getGenreMovies(genre, page).then((films) => {
     dispatch(loadFilmsAction(films));
     dispatch(changeCurrentPageAction());
   });
 };
 
 export const fetchSearchResults = (query, page) => (dispatch) => {
-  movieApi.getSearchResults(query, page).then((films) => {
+  getSearchResults(query, page).then((films) => {
     dispatch(loadFilmsAction(films));
     dispatch(changeCurrentPageAction());
   });
 };
 
 export const fetchMainFilm = (id) => (dispatch) => {
-  movieApi.getMainMovie(id).then((movie) => dispatch(loadMainFilmAction(movie)));
+  getMainMovie(id).then((movie) => dispatch(loadMainFilmAction(movie)));
 };
 
 export const fetchLatesFilmId = () => (dispatch) => {
-  movieApi.getLatestMovieId().then((id) => dispatch(getLatestFilmIdAction(id)));
+  getLatestMovieId().then((id) => dispatch(getLatestFilmIdAction(id)));
 };
 
 export const fetchGenres = () => (dispatch) => {
-  movieApi.getGenreList().then((genres) => dispatch(loadGenresAction(genres)));
+  getGenreList().then((genres) => dispatch(loadGenresAction(genres)));
 };
