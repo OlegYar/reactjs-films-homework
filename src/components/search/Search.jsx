@@ -5,10 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { changeSearchValueAction } from '../../modules/actions';
 import styles from './Search.module.scss';
+import { searchValueSelector } from '../../modules/selectors';
 
 const Search = ({ history }) => {
   const dispatch = useDispatch();
-  const searchValue = useSelector((state) => state.searchValue);
+  const searchValue = useSelector(searchValueSelector);
   return (
     <div className={styles.search}>
       <form

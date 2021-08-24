@@ -1,0 +1,12 @@
+export const isModalActiveSelector = (state) => state.modalWindow.isModalActive;
+export const latestFilmIdSelector = (state) => state.latestFilmId;
+export const keyOfModalWindowSelector = (state) => state.modalWindow.key;
+export const mainFilmSelector = (state) => state.mainFilm;
+export const loadingMainFilmSelector = (state) => state.loadingMainFilm;
+export const isAboutFilmActiveSelector = (state) => state.mainFilm[0].isAboutFilmActive;
+export const filmsSelector = (state) => state.films;
+export const genresSelector = (state) => state.genres;
+export const loadingFilmsSelector = (state) => state.loadingFilms;
+export const currentPageSelector = (state) => state.currentPage;
+export const activeTabSelector = (state) => state.activeTab;
+export const searchValueSelector = (state) => state.searchValue;

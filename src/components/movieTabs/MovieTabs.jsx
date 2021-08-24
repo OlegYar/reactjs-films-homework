@@ -5,11 +5,12 @@ import { Link, withRouter } from 'react-router-dom';
 import { history as historyPropTypes } from 'history-prop-types';
 import styles from './MovieTabs.module.scss';
 import { switchTabAction } from '../../modules/actions';
+import { genresSelector, activeTabSelector } from '../../modules/selectors';
 
 const MovieTabs = ({ history }) => {
   const dispatch = useDispatch();
-  const genres = useSelector((state) => state.genres);
-  const activeTab = useSelector((state) => state.activeTab);
+  const genres = useSelector(genresSelector);
+  const activeTab = useSelector(activeTabSelector);
   const activeStyle = {
     borderBottom: '3px solid #0aaee4',
     fontWeight: 'bold',

@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './ModalWindow.module.scss';
 import { closeModalAction } from '../../modules/actions';
+import { keyOfModalWindowSelector } from '../../modules/selectors';
 
 const ModalWindow = () => {
   const dispatch = useDispatch();
-  const key = useSelector((state) => state.modalWindow.key);
+  const key = useSelector(keyOfModalWindowSelector);
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {

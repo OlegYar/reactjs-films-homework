@@ -4,9 +4,10 @@ import { useSelector } from 'react-redux';
 import MovieListItem from '../movieListItem/MovieListItem';
 import Spinner from '../spinner/Spinner';
 import styles from './MovieList.module.scss';
+import { loadingFilmsSelector } from '../../modules/selectors';
 
 const MovieList = ({ films, genres }) => {
-  const isFilmLoaded = useSelector((state) => state.loadingFilms);
+  const isFilmLoaded = useSelector(loadingFilmsSelector);
   const movieCards = films
     ? films.map((movie) => (
       <li key={movie.id} className={styles.movieListItem}>

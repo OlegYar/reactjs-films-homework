@@ -10,11 +10,12 @@ import styles from './MovieDetailsPage.module.scss';
 import { switchAboutFilmAction, switchTabAction } from '../../modules/actions';
 import { fetchVideo, fetchMainFilm } from '../../services/fetchingData';
 import Spinner from '../spinner/Spinner';
+import { mainFilmSelector, loadingMainFilmSelector, isAboutFilmActiveSelector } from '../../modules/selectors';
 
 const MovieDetailsPageContainer = ({ latestFilmId }) => {
   const dispatch = useDispatch();
-  const mainFilm = useSelector((state) => state.mainFilm);
-  const isLoaded = useSelector((state) => state.loadingMainFilm);
+  const mainFilm = useSelector(mainFilmSelector);
+  const isLoaded = useSelector(loadingMainFilmSelector);
   useEffect(() => {
     dispatch(fetchMainFilm(latestFilmId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -28,7 +29,7 @@ const MovieDetailsPageContainer = ({ latestFilmId }) => {
 
 const MovieDetailsPage = ({ movie }) => {
   const dispatch = useDispatch();
-  const isAboutFilmActive = useSelector((state) => state.mainFilm[0].isAboutFilmActive);
+  const isAboutFilmActive = useSelector(isAboutFilmActiveSelector);
   const {
     id, title, rating, runtime, backdropPath, overview, genres,
   } = movie;

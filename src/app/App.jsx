@@ -12,11 +12,12 @@ import MovieListContainer from '../components/movieListContainer/MovieListContai
 import SearchResults from '../components/searchResults/SearchResults';
 import MovieGenreList from '../components/movieGenreList/MovieGenreList';
 import Footer from '../components/footer/Footer';
+import { isModalActiveSelector, latestFilmIdSelector } from '../modules/selectors';
 
 const App = () => {
   const dispatch = useDispatch();
-  const isModalActive = useSelector((state) => state.modalWindow.isModalActive);
-  const latestFilmId = useSelector((state) => state.latestFilmId);
+  const isModalActive = useSelector(isModalActiveSelector);
+  const latestFilmId = useSelector(latestFilmIdSelector);
   const scrollHandler = (e) => {
     if (
       e.target.documentElement.scrollHeight - (

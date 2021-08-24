@@ -4,13 +4,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchGenreFilms, fetchGenres } from '../../services/fetchingData';
 import MovieList from '../movieList/MovieList';
 import { cleanFilmsAction } from '../../modules/actions';
+import {
+  filmsSelector, loadingFilmsSelector, currentPageSelector, genresSelector,
+} from '../../modules/selectors';
 
 const MovieGenreList = ({ genre }) => {
   const dispatch = useDispatch();
-  const films = useSelector((state) => state.films);
-  const isLoading = useSelector((state) => state.loadingFilms);
-  const currentPage = useSelector((state) => state.currentPage);
-  const genres = useSelector((state) => state.genres);
+  const films = useSelector(filmsSelector);
+  const isLoading = useSelector(loadingFilmsSelector);
+  const currentPage = useSelector(currentPageSelector);
+  const genres = useSelector(genresSelector);
   useEffect(() => {
     dispatch(cleanFilmsAction());
     // eslint-disable-next-line react-hooks/exhaustive-deps
