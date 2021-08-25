@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import debounce from 'lodash.debounce';
 import ModalWindow from '../components/modalWindow/ModalWindow';
 import MovieDetailsPageContainer from '../components/movieDetailsPage';
 import Spinner from '../components/spinner/Spinner';
@@ -18,7 +19,7 @@ const App = () => {
   const dispatch = useDispatch();
   const isModalActive = useSelector(isModalActiveSelector);
   const latestFilmId = useSelector(latestFilmIdSelector);
-  const scrollHandler = (e) => {
+  let scrollHandler = (e) => {
     if (
       e.target.documentElement.scrollHeight - (
         e.target.documentElement.scrollTop + window.innerHeight
@@ -27,6 +28,7 @@ const App = () => {
       dispatch(switchLoadingFilmsToTrueAction());
     }
   };
+  scrollHandler = debounce(scrollHandler, 250);
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler);
     dispatch(fetchLatesFilmId());

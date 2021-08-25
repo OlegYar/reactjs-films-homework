@@ -19,16 +19,16 @@ const MovieTabs = ({ history }) => {
     dispatch(switchTabAction(number));
   };
   const tabs = [
-    { path: '/', title: 'Trending' },
-    { path: '/top_rated', title: 'Top Rated' },
-    { path: '/upcoming', title: 'Coming Soon' },
+    { path: '/', title: 'Trending', key: 1 },
+    { path: '/top_rated', title: 'Top Rated', key: 2 },
+    { path: '/upcoming', title: 'Coming Soon', key: 3 },
   ];
   return (
     <div className={styles.movieTabsContainer}>
       <nav>
         <ul className={styles.movieTabs}>
           {tabs.map((tab, index) => (
-            <li style={activeTab === index + 1 ? activeStyle : null}>
+            <li key={tab.key} style={activeTab === index + 1 ? activeStyle : null}>
               <Link onClick={() => handleClick(index + 1)} to={tab.path}>{tab.title}</Link>
             </li>
           ))}
