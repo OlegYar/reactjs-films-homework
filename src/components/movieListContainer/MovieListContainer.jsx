@@ -18,9 +18,12 @@ const MovieListContainer = ({ listType }) => {
     if (isLoading) {
       dispatch(fetchFilms(listType, currentPage));
     }
-    dispatch(fetchGenres());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
+  useEffect(() => {
+    dispatch(fetchGenres());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   useEffect(() => () => {
     dispatch(cleanFilmsAction());
     // eslint-disable-next-line react-hooks/exhaustive-deps
