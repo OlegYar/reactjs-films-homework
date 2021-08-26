@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -8,24 +8,8 @@ import Stars from '../stars/Stars';
 import AboutFilm from '../aboutFilm/AboutFilm';
 import styles from './MovieDetailsPage.module.scss';
 import { switchAboutFilmAction, switchTabAction } from '../../modules/actions';
-import { fetchVideo, fetchMainFilm } from '../../services/fetchingData';
-import Spinner from '../spinner/Spinner';
-import { mainFilmSelector, loadingMainFilmSelector, isAboutFilmActiveSelector } from '../../modules/selectors';
-
-const MovieDetailsPageContainer = ({ latestFilmId }) => {
-  const dispatch = useDispatch();
-  const mainFilm = useSelector(mainFilmSelector);
-  const isLoaded = useSelector(loadingMainFilmSelector);
-  useEffect(() => {
-    dispatch(fetchMainFilm(latestFilmId));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  return (
-    <>
-      { isLoaded ? <Spinner /> : <MovieDetailsPage movie={mainFilm[0]} /> }
-    </>
-  );
-};
+import { fetchVideo } from '../../services/fetchingData';
+import { isAboutFilmActiveSelector } from '../../modules/selectors';
 
 const MovieDetailsPage = ({ movie }) => {
   const dispatch = useDispatch();
@@ -82,8 +66,4 @@ MovieDetailsPage.propTypes = {
   }).isRequired,
 };
 
-MovieDetailsPageContainer.propTypes = {
-  latestFilmId: PropTypes.number.isRequired,
-};
-
-export default MovieDetailsPageContainer;
+export default MovieDetailsPage;

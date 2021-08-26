@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 import ModalWindow from '../components/modalWindow/ModalWindow';
-import MovieDetailsPageContainer from '../components/movieDetailsPage';
+import MovieDetailsPageContainer from '../components/movieDetailsPageContainer';
 import Spinner from '../components/spinner/Spinner';
 import { switchLoadingFilmsToTrueAction } from '../modules/actions';
 import { fetchLatesFilmId } from '../services/fetchingData';
