@@ -7,39 +7,40 @@ import {
   getLatestMovieId, getGenreList, getVideo,
 } from '.';
 
-export const fetchVideo = (id) => (dispatch) => {
-  getVideo(id).then((key) => dispatch(openModalAction(key)));
+export const fetchVideo = (id) => async (dispatch) => {
+  const key = await getVideo(id);
+  dispatch(openModalAction(key));
 };
 
-export const fetchFilms = (type, page) => (dispatch) => {
-  getMovies(type, page).then((films) => {
-    dispatch(loadFilmsAction(films));
-    dispatch(changeCurrentPageAction());
-  });
+export const fetchFilms = (type, page) => async (dispatch) => {
+  const films = await getMovies(type, page);
+  dispatch(loadFilmsAction(films));
+  dispatch(changeCurrentPageAction());
 };
 
-export const fetchGenreFilms = (genre, page) => (dispatch) => {
-  getGenreMovies(genre, page).then((films) => {
-    dispatch(loadFilmsAction(films));
-    dispatch(changeCurrentPageAction());
-  });
+export const fetchGenreFilms = (genre, page) => async (dispatch) => {
+  const films = await getGenreMovies(genre, page);
+  dispatch(loadFilmsAction(films));
+  dispatch(changeCurrentPageAction());
 };
 
-export const fetchSearchResults = (query, page) => (dispatch) => {
-  getSearchResults(query, page).then((films) => {
-    dispatch(loadFilmsAction(films));
-    dispatch(changeCurrentPageAction());
-  });
+export const fetchSearchResults = (query, page) => async (dispatch) => {
+  const films = await getSearchResults(query, page);
+  dispatch(loadFilmsAction(films));
+  dispatch(changeCurrentPageAction());
 };
 
-export const fetchMainFilm = (id) => (dispatch) => {
-  getMainMovie(id).then((movie) => dispatch(loadMainFilmAction(movie)));
+export const fetchMainFilm = (id) => async (dispatch) => {
+  const movie = await getMainMovie(id);
+  dispatch(loadMainFilmAction(movie));
 };
 
-export const fetchLatesFilmId = () => (dispatch) => {
-  getLatestMovieId().then((id) => dispatch(getLatestFilmIdAction(id)));
+export const fetchLatestFilmId = () => async (dispatch) => {
+  const id = await getLatestMovieId();
+  dispatch(getLatestFilmIdAction(id));
 };
 
-export const fetchGenres = () => (dispatch) => {
-  getGenreList().then((genres) => dispatch(loadGenresAction(genres)));
+export const fetchGenres = () => async (dispatch) => {
+  const genres = await getGenreList();
+  dispatch(loadGenresAction(genres));
 };
