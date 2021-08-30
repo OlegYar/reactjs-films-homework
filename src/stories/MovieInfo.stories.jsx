@@ -1,5 +1,4 @@
 import React from 'react';
-
 import MovieInfo from '../components/movieInfo/MovieInfo';
 
 export default {
@@ -16,6 +15,23 @@ const Template = (args) => <MovieInfo {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
   title: 'THE JUNGLE BOOK',
-  genreList: ['Adventure', 'Drama', 'Family', 'Fantasy'],
-  duration: '1h 46m',
+  genres: [
+    {
+      id: 18,
+      name: 'Drama',
+    },
+    {
+      id: 21,
+      name: 'Action',
+    },
+    {
+      id: 12,
+      name: 'Fantasy',
+    },
+  ],
+  duration: 140,
+};
+
+Primary.parameters = {
+  backgrounds: { default: 'black' },
 };

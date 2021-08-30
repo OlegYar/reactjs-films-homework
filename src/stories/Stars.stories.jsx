@@ -17,3 +17,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   rating: 4.8,
 };
+
+Primary.parameters = {
+  backgrounds: { default: 'black' },
+};
