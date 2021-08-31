@@ -20,6 +20,7 @@ Primary.args = {
   id: 429617,
   title: 'Spider-Man: Far From Home',
   rating: 7.5,
+  backgroundImg: { background: 'url(https://image.tmdb.org/t/p/w300/4q2NNj4S5dG2RLF9CpXsej7yXl.jpg) no-repeat center top / cover' },
   genres: 'Action, Adventure, Science Fiction',
   overview: 'Peter Parker and his friends go on a summer trip to Europe. However, they will hardly be able to rest - Peter will have to agree to help Nick Fury uncover the mystery of creatures that cause natural disasters and destruction throughout the continent.',
 };

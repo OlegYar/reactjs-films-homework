@@ -6,11 +6,11 @@ import { switchItemToMainModeAction } from '../../modules/actions';
 import { fetchVideo, fetchMainFilm } from '../../services/fetchingData';
 
 const MovieListItemInfo = ({
-  id, title, rating, background, genres, overview,
+  id, title, rating, backgroundImg, genres, overview,
 }) => {
   const dispatch = useDispatch();
   return (
-    <div style={background} className={styles.movieCard}>
+    <div style={backgroundImg} className={styles.movieCard}>
       <div className={styles.movieCardCover}>
         <button
           onClick={() => dispatch(switchItemToMainModeAction(id))}
@@ -43,7 +43,7 @@ MovieListItemInfo.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
-  background: PropTypes.objectOf(PropTypes.string).isRequired,
+  backgroundImg: PropTypes.objectOf(PropTypes.string).isRequired,
   genres: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
 };

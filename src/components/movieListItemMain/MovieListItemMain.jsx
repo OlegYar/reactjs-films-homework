@@ -6,12 +6,12 @@ import { switchItemToInfoModeAction } from '../../modules/actions';
 import { fetchMainFilm, fetchVideo } from '../../services/fetchingData';
 
 const MovieListItemMain = ({
-  id, title, rating, background, genres,
+  id, title, rating, backgroundImg, genres,
 }) => {
   const dispatch = useDispatch();
   return (
     <div className={styles.movieCard}>
-      <div style={background} className={styles.movieCardCover}>
+      <div style={backgroundImg} className={styles.movieCardCover}>
         <div className={styles.movieCardInfo}>
           <button onClick={() => dispatch(fetchVideo(id))} type="button" className={styles.playIcon}>
             <i className="fas fa-play-circle play"> </i>
@@ -41,7 +41,7 @@ MovieListItemMain.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
-  background: PropTypes.objectOf(PropTypes.string).isRequired,
+  backgroundImg: PropTypes.objectOf(PropTypes.string).isRequired,
   genres: PropTypes.string.isRequired,
 };
 

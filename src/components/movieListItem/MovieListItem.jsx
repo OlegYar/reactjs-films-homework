@@ -19,7 +19,7 @@ const MovieListItem = ({ movie, genres }) => {
       id={id}
       title={title}
       rating={rating}
-      background={movieCover}
+      backgroundImg={movieCover}
       genres={genreStr}
     />
   ) : (
@@ -27,7 +27,7 @@ const MovieListItem = ({ movie, genres }) => {
       id={id}
       title={title}
       rating={rating}
-      background={movieCover}
+      backgroundImg={movieCover}
       genres={genreStr}
       overview={overview}
     />
