@@ -4,23 +4,7 @@ import {
   SWITCH_ITEM_TO_MAIN_MODE, OPEN_MODAL, CLOSE_MODAL, SWITCH_TAB,
 } from './constants';
 
-const initialState = {
-  films: [],
-  currentPage: 1,
-  loadingFilms: true,
-  searchValue: '',
-  mainFilm: null,
-  latestFilmId: null,
-  loadingMainFilm: true,
-  genres: null,
-  modalWindow: {
-    isModalActive: false,
-    key: null,
-  },
-  activeTab: 1,
-};
-
-const reducer = (state = initialState, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case LOAD_FILMS:
       return {
