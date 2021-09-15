@@ -15,7 +15,7 @@ export const fetchVideo = (id) => async (dispatch) => {
 export const fetchFilms = (type, page) => async (dispatch) => {
   const films = await getMovies(type, page);
   dispatch(loadFilmsAction(films));
-  dispatch(getLatestFilmIdAction(films[0].id));
+  if (type === 'popular') dispatch(getLatestFilmIdAction(films[0].id));
   dispatch(changeCurrentPageAction());
 };
 
