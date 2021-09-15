@@ -6,7 +6,6 @@ import ModalWindow from '../components/modalWindow/ModalWindow';
 import MovieDetailsPageContainer from '../components/movieDetailsPageContainer';
 import Spinner from '../components/spinner/Spinner';
 import { switchLoadingFilmsToTrueAction } from '../modules/actions';
-import { fetchLatestFilmId } from '../services/fetchingData';
 import './App.scss';
 import MovieTabs from '../components/movieTabs/MovieTabs';
 import MovieListContainer from '../components/movieListContainer/MovieListContainer';
@@ -31,7 +30,6 @@ const App = () => {
   scrollHandler = debounce(scrollHandler, 250);
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler);
-    dispatch(fetchLatestFilmId());
     return () => {
       document.removeEventListener('scroll', scrollHandler);
     };

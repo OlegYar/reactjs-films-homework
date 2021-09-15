@@ -43,11 +43,6 @@ async function getMainMovie(id) {
   return transformMovies(res);
 }
 
-async function getLatestMovieId() {
-  const res = await getResorce('/movie/popular?api_key=95ba99e0f191e9eabd8a1d0c164f0af3&language=en-US&page=1');
-  return res.results[0].id;
-}
-
 async function getGenreList() {
   const res = await getResorce('/genre/movie/list?api_key=95ba99e0f191e9eabd8a1d0c164f0af3&language=en-US');
   return res.genres;
@@ -63,5 +58,5 @@ async function getVideo(id) {
 
 export {
   getMovies, getGenreMovies, getSearchResults, getMainMovie,
-  getLatestMovieId, getGenreList, getVideo,
+  getGenreList, getVideo,
 };

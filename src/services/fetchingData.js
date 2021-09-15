@@ -4,7 +4,7 @@ import {
 } from '../modules/actions';
 import {
   getMovies, getGenreMovies, getSearchResults, getMainMovie,
-  getLatestMovieId, getGenreList, getVideo,
+  getGenreList, getVideo,
 } from '.';
 
 export const fetchVideo = (id) => async (dispatch) => {
@@ -15,6 +15,7 @@ export const fetchVideo = (id) => async (dispatch) => {
 export const fetchFilms = (type, page) => async (dispatch) => {
   const films = await getMovies(type, page);
   dispatch(loadFilmsAction(films));
+  dispatch(getLatestFilmIdAction(films[0].id));
   dispatch(changeCurrentPageAction());
 };
 
@@ -33,11 +34,6 @@ export const fetchSearchResults = (query, page) => async (dispatch) => {
 export const fetchMainFilm = (id) => async (dispatch) => {
   const movie = await getMainMovie(id);
   dispatch(loadMainFilmAction(movie));
-};
-
-export const fetchLatestFilmId = () => async (dispatch) => {
-  const id = await getLatestMovieId();
-  dispatch(getLatestFilmIdAction(id));
 };
 
 export const fetchGenres = () => async (dispatch) => {
