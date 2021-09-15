@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './noVideoWindow.module.scss';
+import styles from './NoVideoWindow.module.scss';
 
 const NoVideoWindow = () => (
   <div className={styles.noVideo}>

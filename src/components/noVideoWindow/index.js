@@ -1,1 +1,1 @@
-export { default } from './noVideoWindow';
+export { default } from './NoVideoWindow';
