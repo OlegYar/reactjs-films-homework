@@ -1,11 +1,16 @@
 import React from 'react';
-import { render } from '../../utils/test-utils';
+import { render, screen } from '../../utils/test-utils';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import reducer from '../../modules/reducer';
 import Search from './Search';
 
 test('render Search', () => {
-  const { getByPlaceholderText, getByTestId } = render(<Search />);
-  const searchEl = getByPlaceholderText('Search here...');
-  const searchButtonEl = getByTestId('searchButton');
-  expect(searchEl).toBeTruthy();
-  expect(searchButtonEl.className).toBe('searchButton');
+  const state = {
+    searchValue: '',
+  };
+  const store = createStore(reducer, state, applyMiddleware(thunk));
+  render(<Search />, { store });
+  expect(screen.getByPlaceholderText('Search here...')).toBeTruthy();
+  expect(screen.getByTestId('searchButton')).toBeTruthy();
 });

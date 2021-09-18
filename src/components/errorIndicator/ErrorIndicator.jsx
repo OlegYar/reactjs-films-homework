@@ -3,7 +3,7 @@ import styles from './ErrorIndicator.module.scss';
 
 const ErrorIndicator = () => (
   <div className={styles.container}>
-    <p className={styles.smile}><i className="far fa-sad-tear" /></p>
+    <p data-testid="smile-icon" className={styles.smile}><i className="far fa-sad-tear" /></p>
     <p className={styles.sorryText}>Sorry, something went wrong.</p>
   </div>
 );
