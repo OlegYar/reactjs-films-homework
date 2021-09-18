@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSearchResults, fetchGenres } from '../../services/fetchingData';
 import { cleanFilmsAction } from '../../modules/actions';
-import MovieList from '../movieList/MovieList';
-import styles from './SearchResults.module.scss';
+import MovieList from '../movieList';
+import NoResults from '../noResults';
+import Spinner from '../spinner';
 import {
   filmsSelector, loadingFilmsSelector, currentPageSelector, genresSelector,
 } from '../../modules/selectors';
@@ -15,12 +16,6 @@ const SearchResults = ({ value }) => {
   const isLoading = useSelector(loadingFilmsSelector);
   const currentPage = useSelector(currentPageSelector);
   const genres = useSelector(genresSelector);
-  const noResults = (
-    <div className={styles.noResults}>
-      <p className={styles.smile}><i className="far fa-sad-tear" /></p>
-      <p className={styles.sorryText}>There&apos;s no results</p>
-    </div>
-  );
   useEffect(() => {
     dispatch(cleanFilmsAction());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,9 +31,13 @@ const SearchResults = ({ value }) => {
     dispatch(cleanFilmsAction());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  let result = films[0] ? <MovieList films={films} genres={genres} /> : <NoResults />;
+  if (currentPage === 1 && isLoading) {
+    result = <Spinner />;
+  }
   return (
     <>
-      { films[0] ? <MovieList films={films} genres={genres} /> : noResults }
+      {result}
     </>
   );
 };
